@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import NavContainer from "../../components/NavContainer"
-import Cabecalho from "./components/cabecalho"
-
+import Cabecalho from "../../components/Cabecalho"
+import Footer from "../../components/Footer"
 
 export default function HabitosPage(){
     return (
@@ -12,6 +12,7 @@ export default function HabitosPage(){
                 <Cabecalho />
                 <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
             </ConteudoContainer>
+            <Footer />
         </PageContainer>
     )
 }
