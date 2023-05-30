@@ -9,7 +9,7 @@ export default function Inputs(){
                 <Input placeholder="email"/>
                 <Input placeholder="senha" />
                 <SCButton>Enviar</SCButton>
-                <Link className="link">Não tem uma conta? Cadastre-se!</Link>
+                <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
             </ContainerInputs>
         </>
     )

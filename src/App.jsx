@@ -2,7 +2,7 @@ import styled from "styled-components"
 import axios from 'axios';
 import React, { useState } from "react";
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom';
-import HistoricPage from './pages/HistoricPage/HistoricPage'
+import CadastroPage from './pages/CadastroPage/CadastroPage'
 import HomePage from "./pages/HomePage/HomePage";
 import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
@@ -38,10 +38,8 @@ export default function App() {
                           <HomePage/>
                       }>
                       </Route>
-                      <Route path="/historicPage" element={
-                          <HistoricPage
-                            allEntries = {allEntries}
-                            getEntries = {getEntries}
+                      <Route path="/cadastro" element={
+                          <CadastroPage
                           />
                       }>
                       </Route>
