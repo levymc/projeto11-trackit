@@ -31,7 +31,7 @@ const ConteudoContainer = styled.div`
     flex-direction: column;
     padding-top: 6rem;
     width: 100%;
-    padding-left: 1rem; padding-right: 1rem;
+    /* padding-left: 1rem; padding-right: 1rem; */
     height: 100vh;
     background-color: yellowgreen;
 `
