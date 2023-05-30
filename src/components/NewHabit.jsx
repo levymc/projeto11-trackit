@@ -1,21 +1,38 @@
 import styled from "styled-components"
 import Input from "./Input"
+import React, { useState } from "react";
 
 export default function NewHabit(){
 
     const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+
+    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
+
+    const changeSelect = (index, newValue) => {
+          const newArray = [...daySelected];
+          newArray[index] = newValue;
+          setDaySelected(newArray);
+      };
 
     return (
         <ContainerNewHabit>
             <Input placeholder="nome do hábito"/>
             <ContainerLetters>
                 {days.map((day, i) => 
-                    <Letter key={i}>{day}</Letter>
+                    <Letter 
+                        key={i} 
+                        selected = {daySelected[i]}
+                        onClick={() =>{
+                            changeSelect(i, !daySelected[i])
+                        }}
+                    >
+                        {day}
+                    </Letter>
                 )}
             </ContainerLetters>
             <ContainerBtns>
                 <button id="cancelarBtn">Cancelar</button>
-                <button id="salvarBtn">Salvar</button>
+                <button id="salvarBtn" onClick={() => {console.log(daySelected)}}>Salvar</button>
             </ContainerBtns>
         </ContainerNewHabit>
     )
@@ -40,12 +57,15 @@ const ContainerLetters = styled.div`
 `
 
 const Letter = styled.div`
+    cursor: pointer;
     padding: 0.4rem;   
     display: flex;
     justify-content: center;
     align-items: start;
     border-radius: 5px;
     border: 1px solid #D5D5D5;
+    color: ${(props) => !props.selected ? "#DBDBDB" : "white"};
+    background-color: ${(props) => !props.selected ? "white" : "#CFCFCF"};
 `
 
 const ContainerBtns = styled.div`
