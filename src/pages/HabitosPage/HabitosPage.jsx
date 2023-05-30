@@ -33,7 +33,7 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.75em;
-  background-color: #ffffff;
+  background-color: #E5E5E5;
   border-radius: 10px;
 `;
 
