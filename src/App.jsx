@@ -2,13 +2,11 @@ import styled from "styled-components"
 import axios from 'axios';
 import React, { useState } from "react";
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom';
-import InputEntries from './pages/InputEntries/InputEntries'
 import HistoricPage from './pages/HistoricPage/HistoricPage'
 import HomePage from "./pages/HomePage/HomePage";
-import ChartsPage from "./pages/ChartsPage/ChartsPage";
-import BtnHome from './components/BtnHome'
 import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
+
 
 export default function App() {
 
@@ -35,32 +33,13 @@ export default function App() {
           <ResetStyle />
             <Container>
               <Router>
-                  <NavContainer>
-                      <BtnHome />
-                      Finanças Casa
-                  </NavContainer>
-
                   <Routes>
                       <Route path="/" element={
                           <HomePage/>
                       }>
                       </Route>
-                      <Route path="/inputEntries" element={
-                          <InputEntries
-                            allEntries = {allEntries}
-                            getEntries = {getEntries}
-                          />
-                      }>
-                      </Route>
                       <Route path="/historicPage" element={
                           <HistoricPage
-                            allEntries = {allEntries}
-                            getEntries = {getEntries}
-                          />
-                      }>
-                      </Route>
-                      <Route path="/chartsPage" element={
-                          <ChartsPage
                             allEntries = {allEntries}
                             getEntries = {getEntries}
                           />
