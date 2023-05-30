@@ -15,7 +15,7 @@ const ContainerLogo = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: red;
+    background-color: #FFFFFF;
 `
 
 const SCLogo = styled.img`

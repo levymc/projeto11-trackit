@@ -26,7 +26,7 @@ const ContainerHome = styled.div`
     align-items: center;
     justify-content: center;
     gap: 1em;
-    background-color: #eaeaea;
+    background-color: #FFFFFF;
     border-radius: 10px;
     border: 1px solid #d5d5d5;
 `
