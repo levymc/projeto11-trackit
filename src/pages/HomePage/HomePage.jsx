@@ -10,13 +10,25 @@ import ContainerInputs from "../../components/ContainerInputs";
 export default function HomePage(props){
     const navigateTo = useNavigate();
 
+    const campos = [
+        {
+            name: "email",
+        },
+        {
+            name: "senha",
+        },
+    ]
+
     return (
         <>
             <ContainerHome >
                 <Logo />
                 <ContainerInputs>
-                    <Input placeholder="email"/>
-                    <Input placeholder="senha" />
+                    {campos.map((campo, i) => {
+                        return (
+                            <Input placeholder={campo.name} />
+                        )
+                    })}
                     <LargeBtn nome="Entrar"/>
                     <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
                 </ContainerInputs>
