@@ -17,6 +17,7 @@ export default function HomePage(props){
 }
 
 const ContainerHome = styled.div`
+    padding-top: 3em;
     width: 100%;
     display: flex;
     flex-direction: column;

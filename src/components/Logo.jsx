@@ -1,9 +1,10 @@
 import styled from "styled-components"
+import logo from '../assets/logo.png';
 
 export default function Logo(){
     return (
         <ContainerLogo>
-            Teste Logo
+            <SCLogo src={logo} alt="Logo"></SCLogo>
         </ContainerLogo>
     )
 }
@@ -15,4 +16,9 @@ const ContainerLogo = styled.div`
     justify-content: center;
     align-items: center;
     background-color: red;
+`
+
+const SCLogo = styled.img`
+    border-radius: 3px;
+    width: 40vw;
 `
