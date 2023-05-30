@@ -18,7 +18,8 @@ const ResetStyle = createGlobalStyle`
 		padding: 0;
 		border: 0;
 		font-size: 100%;
-		font: inherit;
+		/* font: inherit; */
+		font-family: 'Lexend Deca', sans-serif;
 		vertical-align: baseline;
 	}
 	/* body{

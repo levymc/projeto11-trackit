@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage/HomePage";
 import HabitosPage from "./pages/HabitosPage/HabitosPage";
 import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
-import { createGlobalStyle } from 'styled-components';
 
 
 
@@ -34,7 +33,6 @@ export default function App() {
     return (
         <>
           <ResetStyle />
-          <GlobalStyles />
             <Container>
               <Router>
                   <Routes>
@@ -68,13 +66,4 @@ const Container = styled.div`
   box-sizing: border-box;
   border: 0;
 `
-const GlobalStyles = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
-  
-  body {
-    font-family: 'Lexend Deca', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-  }
-`;
 
