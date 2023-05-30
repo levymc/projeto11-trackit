@@ -5,7 +5,7 @@ import NavContainer from "../../components/NavContainer"
 export default function HabitosPage(){
     return (
         <PageContainer>
-            <NavContainer>AA</NavContainer>
+            <NavContainer />
         </PageContainer>
     )
 }
