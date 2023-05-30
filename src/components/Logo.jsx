@@ -21,4 +21,5 @@ const ContainerLogo = styled.div`
 const SCLogo = styled.img`
     border-radius: 3px;
     width: 40vw;
+    max-width: 200px;
 `

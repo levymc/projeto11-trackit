@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import axios from "axios";
 import Logo from "../../components/Logo";
+import Input from "../../components/Input";
 
 export default function HomePage(props){
     const navigateTo = useNavigate();
@@ -11,6 +12,7 @@ export default function HomePage(props){
         <>
             <ContainerHome >
                 <Logo />
+                <Input />
             </ContainerHome>
         </>
     )
