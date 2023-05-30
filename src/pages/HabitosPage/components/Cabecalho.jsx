@@ -9,17 +9,19 @@ export default function Cabecalho(){
     )
 }
 const ContainerCabecalho = styled.div`
+    position: relative;
     width: 100%;
     background-color: red;
     height: auto;
     display: flex;
-    gap: 50vw;
+    /* gap: 45vw; */
     align-items: center;
-    justify-content: center;
+    /* justify-content: space-around; */
     h1{
         font-size: 22.976px;
         line-height: 29px;
         color: #126BA5;
+        text-align: start;
     }
 `
 
@@ -32,4 +34,7 @@ const SCButton = styled.button`
     border-radius: 5px;
     color: white;
     font-weight: 700;
+    position: absolute;
+    right: 0;
+
 `
