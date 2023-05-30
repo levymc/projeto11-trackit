@@ -21,10 +21,10 @@ const ResetStyle = createGlobalStyle`
 		font: inherit;
 		vertical-align: baseline;
 	}
-	body{
+	/* body{
 		padding-bottom: 3em !important;
 		height: 100% !important;
-	}
+	} */
 	/* HTML5 display-role reset for older browsers */
 	article, aside, details, figcaption, figure, 
 	footer, header, hgroup, menu, nav, section {
