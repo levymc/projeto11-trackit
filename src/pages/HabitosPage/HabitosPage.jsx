@@ -2,14 +2,23 @@ import styled from "styled-components"
 import NavContainer from "../../components/NavContainer"
 import Cabecalho from "../../components/Cabecalho"
 import Footer from "../../components/Footer"
+import NewHabit from "../../components/NewHabit"
+import React, { useState } from "react";
 
 export default function HabitosPage(){
+
+    const [isNewHabit, setIsNewHabit] = useState(false)
+
     return (
         <PageContainer>
             <NavContainer />
 
             <ConteudoContainer>
-                <Cabecalho />
+                <Cabecalho 
+                    setIsNewHabit={setIsNewHabit} 
+                    isNewHabit={isNewHabit}
+                />
+                {isNewHabit && <NewHabit />}
                 <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>
             </ConteudoContainer>
             <Footer />

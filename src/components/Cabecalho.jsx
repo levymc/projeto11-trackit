@@ -1,10 +1,12 @@
 import styled from "styled-components"
 
-export default function Cabecalho(){
+export default function Cabecalho(props){
     return (
         <ContainerCabecalho>
             <h1>Meus hábitos</h1>
-            <SCButton>+</SCButton>
+            <SCButton onClick={() => {
+                props.setIsNewHabit(!props.isNewHabit)
+            }}>+</SCButton>
         </ContainerCabecalho>
     )
 }
