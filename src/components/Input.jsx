@@ -9,7 +9,7 @@ export default function Input(props){
 }
 const SCInput = styled.input`
     width: 10vw;
-    max-width: 200px;
+    max-width: 300px;
     border: 1px solid #1f0a0a;
     border-radius: 5px;
 `
