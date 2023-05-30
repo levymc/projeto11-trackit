@@ -2,6 +2,7 @@ import styled from "styled-components"
 import Input from "./Input"
 import { Link } from 'react-router-dom';
 import LargeBtn from "./LargeBtn";
+import { ContainerInputs } from "./ContainerInputs"
 
 
 export default function Inputs(){
@@ -17,15 +18,3 @@ export default function Inputs(){
     )
 }
 
-const ContainerInputs = styled.div`
-    background-color: #FFFFFF;
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    .link{
-        margin-top: 2em;
-    }
-`
