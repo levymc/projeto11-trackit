@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes, css } from "styled-components";
 import NavContainer from "../../components/NavContainer";
 import Cabecalho from "../../components/Cabecalho";
 import Footer from "../../components/Footer";
@@ -33,7 +33,7 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.75em;
-  background-color: #E5E5E5;
+  background-color: #ffffff;
   border-radius: 10px;
 `;
 
@@ -66,8 +66,15 @@ const fadeAnimation = keyframes`
 `;
 
 const NewHabitContainer = styled.div`
-  opacity: ${(props) => (props.isNewHabit ? 1 : 0)};
-  transform: translateY(${(props) => (props.isNewHabit ? 0 : "-10px")});
+  opacity: 0;
+  transform: translateY(-10px);
   animation: ${fadeAnimation} 0.3s ease-in-out;
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+
+  ${(props) =>
+    props.isNewHabit &&
+    css`
+      opacity: 1;
+      transform: translateY(0);
+    `}
 `;
