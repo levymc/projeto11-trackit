@@ -1,3 +1,6 @@
+import styled from "styled-components"
+
+
 const ContainerInputs = styled.div`
     background-color: #FFFFFF;
     width: 100%;

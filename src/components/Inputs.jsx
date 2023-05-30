@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Input from "./Input"
 import { Link } from 'react-router-dom';
 import LargeBtn from "./LargeBtn";
-import { ContainerInputs } from "./ContainerInputs"
+import ContainerInputs from "./ContainerInputs";
 
 
 export default function Inputs(){
