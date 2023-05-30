@@ -1,9 +1,11 @@
 import styled from "styled-components"
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 import React, { useState } from "react";
 import axios from "axios";
 import Logo from "../../components/Logo";
-import Inputs from "../../components/Inputs";
+import Input from "../../components/Input"
+import LargeBtn from "../../components/LargeBtn";
+import ContainerInputs from "../../components/ContainerInputs";
 
 export default function HomePage(props){
     const navigateTo = useNavigate();
@@ -12,7 +14,12 @@ export default function HomePage(props){
         <>
             <ContainerHome >
                 <Logo />
-                <Inputs />
+                <ContainerInputs>
+                    <Input placeholder="email"/>
+                    <Input placeholder="senha" />
+                    <LargeBtn nome="Entrar"/>
+                    <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
+                </ContainerInputs>
             </ContainerHome>
         </>
     )

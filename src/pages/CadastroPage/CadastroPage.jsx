@@ -18,7 +18,7 @@ export default function SeatsPage(props) {
                 <Input placeholder="senha" />
                 <Input placeholder="nome" />
                 <Input placeholder="foto" />
-                <Link to="/cadastro" className="link">Já tem uma conta? Faça login!</Link>
+                <Link to="/" className="link">Já tem uma conta? Faça login!</Link>
             </ContainerInputs>
         </PageContainer>
     )
