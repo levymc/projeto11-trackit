@@ -26,7 +26,7 @@ export default function HomePage(props){
                 <ContainerInputs>
                     {campos.map((campo, i) => {
                         return (
-                            <Input placeholder={campo.name} />
+                            <Input key={i} placeholder={campo.name} />
                         )
                     })}
                     <LargeBtn nome="Entrar"/>
