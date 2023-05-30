@@ -36,7 +36,7 @@ const ConteudoContainer = styled.div`
     width: 100%;
     /* padding-left: 1rem; padding-right: 1rem; */
     height: 100vh;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
     p{
         word-break: break-all;
         font-size: 17.976px;

@@ -11,7 +11,7 @@ export default function Cabecalho(){
 const ContainerCabecalho = styled.div`
     position: relative;
     width: 100%;
-    background-color: red;
+    /* background-color: red; */
     height: auto;
     display: flex;
     /* gap: 45vw; */
