@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom';
 import CadastroPage from './pages/CadastroPage/CadastroPage'
 import HomePage from "./pages/HomePage/HomePage";
+import HabitosPage from "./pages/HabitosPage/HabitosPage";
 import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
 
@@ -34,12 +35,17 @@ export default function App() {
             <Container>
               <Router>
                   <Routes>
-                      <Route path="/" element={
+                      {/* <Route path="/" element={
                           <HomePage/>
                       }>
-                      </Route>
+                      </Route> */}
                       <Route path="/cadastro" element={
                           <CadastroPage
+                          />
+                      }>
+                      </Route>
+                      <Route path="/" element={
+                          <HabitosPage
                           />
                       }>
                       </Route>
@@ -60,21 +66,3 @@ const Container = styled.div`
   border: 0;
 `
 
-const NavContainer = styled.div`
-    width: 100%;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #505050;
-    color: #ededed;
-    font-family: 'Roboto', sans-serif;
-    font-size: 34px;
-    position: fixed;
-    z-index:1;
-    top: 0;
-    a {
-        text-decoration: none;
-        color: #E8833A;
-    }
-`
