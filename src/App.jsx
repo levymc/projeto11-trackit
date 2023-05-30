@@ -57,6 +57,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+  border: 0;
 `
 
 const NavContainer = styled.div`
