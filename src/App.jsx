@@ -45,8 +45,13 @@ export default function App() {
                           />
                       }>
                       </Route>
-                      <Route path="/h" element={
+                      <Route path="/habitos" element={
                           <HabitosPage
+                          />
+                      }>
+                      </Route>
+                      <Route path="/hoje" element={
+                          <HojePage
                           />
                       }>
                       </Route>
