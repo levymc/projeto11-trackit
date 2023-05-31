@@ -7,6 +7,7 @@ import Input from "../../components/Input";
 import LargeBtn from "../../components/LargeBtn";
 import ContainerInputs from "../../components/ContainerInputs";
 import { InfinitySpin } from "react-loader-spinner";
+import Swal from 'sweetalert2';
 
 export default function HomePage(props){
     const navigateTo = useNavigate();
@@ -44,13 +45,15 @@ export default function HomePage(props){
         setLoading(true);
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", postData)
             .then(response => {
-                // Lógica para lidar com a resposta do servidor
-                setRespostaServidor(response.data);
+                navigateTo("/habitos")
                 setLoading(false);
             })
             .catch(error => {
-                setRespostaServidor(error);
                 setLoading(false);
+                Swal.fire({
+                    title: error.response.data.message,
+                    confirmButtonColor: "#52B6FF",
+                })
             });
     }
         
