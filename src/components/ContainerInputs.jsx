@@ -10,6 +10,7 @@ const ContainerInputs = styled.form`
     font-family: 'Roboto', sans-serif;
     justify-content: center;
     align-items: center;
+    user-select: all;
     .link{
         margin-top: 2em;
         font-family: 'Roboto', sans-serif;

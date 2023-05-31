@@ -6,7 +6,7 @@ import Logo from "../../components/Logo";
 import Input from "../../components/Input";
 import LargeBtn from "../../components/LargeBtn";
 import ContainerInputs from "../../components/ContainerInputs";
-import { LineWave } from "react-loader-spinner";
+import { InfinitySpin } from "react-loader-spinner";
 
 export default function HomePage(props){
     const navigateTo = useNavigate();
@@ -16,18 +16,12 @@ export default function HomePage(props){
 
     const [respostaServidor, setRespostaServidor] = useState("")
 
-    const loadIcon = <LineWave
-    height="100"
-    width="100"
-    color="black"
-    ariaLabel="line-wave"
-    wrapperStyle={{}}
-    wrapperClass=""
-    visible={true}
-    firstLineColor=""
-    middleLineColor=""
-    lastLineColor=""
-/>
+    const loadIcon = (
+        <InfinitySpin 
+            width='200'
+            color="black"
+        />
+    )
 
     const campos = [
         {
