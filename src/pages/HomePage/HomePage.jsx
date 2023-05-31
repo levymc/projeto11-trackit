@@ -8,7 +8,7 @@ import LargeBtn from "../../components/LargeBtn";
 import ContainerInputs from "../../components/ContainerInputs";
 import { InfinitySpin } from "react-loader-spinner";
 import Swal from 'sweetalert2';
-import { UserContext } from "../../App"
+import UserContext from "../../components/UserContext";
 
 export default function HomePage(props){
     const navigateTo = useNavigate();

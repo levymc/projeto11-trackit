@@ -8,7 +8,7 @@ import Input from "../../components/Input";
 import LargeBtn from "../../components/LargeBtn";
 import { InfinitySpin } from "react-loader-spinner";
 import Swal from 'sweetalert2';
-import { UserContext } from "../../App"
+import UserContext from "../../components/UserContext";
 
 export default function SeatsPage(props) {
     const [loading, setLoading] = useState(false);
