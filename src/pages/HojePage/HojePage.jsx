@@ -9,12 +9,21 @@ import ContainerInputs from "../../components/ContainerInputs";
 import { InfinitySpin } from "react-loader-spinner";
 import Swal from 'sweetalert2';
 import UserContext from "../../components/UserContext";
+import dayjs from 'dayjs'
+import 'dayjs/locale/pt-br';
+import NavContainer from "../../components/NavContainer";
+
 
 export default function HomePage(props){
     const navigateTo = useNavigate();
     const [loading, setLoading] = useState(false);
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+
+    dayjs.locale('pt-br');
+    const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase());
+    const [dataAtual, setDataAtual] = useState(dataFormatada);
+
+
+    console.log(dataAtual)
 
     const { dataUser, setDataUser } = useContext(UserContext);
 
@@ -26,82 +35,47 @@ export default function HomePage(props){
         />
     )
 
-    const campos = [
-        {
-            name: "email",
-            var: email,
-            setVar: setEmail,
-        },
-        {
-            name: "senha",
-            var: password,
-            setVar: setPassword,
-        },
-    ];
-
-    const enviarLogin = () =>{
-        const postData = {
-            email: email,
-            password: password
-        };
-        setLoading(true);
-        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", postData)
-            .then(response => {
-                navigateTo("/habitos")
-                setLoading(false);
-                setDataUser(response.data)
-            })
-            .catch(error => {
-                setLoading(false);
-                Swal.fire({
-                    title: error.response.data.message,
-                    confirmButtonColor: "#52B6FF",
-                })
-            });
-    }
-        
-
-    const handleLogin = (e) => {
-        console.log(email,password)
-        e.preventDefault();
-        enviarLogin();
-    };
 
     return (
         <>
-            <ContainerHome>
-                <Logo />
-                <ContainerInputs onSubmit={handleLogin}>
-                    {campos.map((campo, i) => {
-                        return (
-                            <Input 
-                            disabled={loading} 
-                            key={i} 
-                            type={i === 0 ? 'email' : 'password'} 
-                            placeholder={campo.name} 
-                            onChange={(e) => campo.setVar(e.target.value)} />
-                        )
-                    })}
-                    <LargeBtn 
-                        nome= {loading ? loadIcon : "Entrar"}
-                        disabled={loading}
-                    >
-                    </LargeBtn>
-                    <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
-                </ContainerInputs>
-            </ContainerHome>
+            <NavContainer />
+            <ContainerHoje>
+                
+                <Topo>
+                    <h1>{dataAtual}</h1>
+                    <h2>Nenhum hábito concluído ainda</h2>
+                </Topo>
+                
+            </ContainerHoje>
         </>
     );
 }
 
-const ContainerHome = styled.div`
-    padding-top: 3em;
+const ContainerHoje = styled.div`
+    padding-top: 6em;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: start;
+    /* justify-content: center; */
     gap: 1em;
     background-color: #FFFFFF;
     border-radius: 10px;
+    padding-left: 0.75em; padding-right: 0.75em;
+`;
+
+const Topo = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    h1{
+        font-size: 22.976px;
+        line-height: 29px;
+        color: #126BA5;
+    }
+    h2{
+        font-size: 17.976px;
+        line-height: 22px;
+        color: #BABABA;
+    }
 `;

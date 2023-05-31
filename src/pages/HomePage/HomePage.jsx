@@ -47,7 +47,7 @@ export default function HomePage(props){
         setLoading(true);
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", postData)
             .then(response => {
-                navigateTo("/habitos")
+                navigateTo("/hoje")
                 setLoading(false);
                 setDataUser(response.data)
             })

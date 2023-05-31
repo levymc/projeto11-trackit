@@ -4,6 +4,7 @@ import React, { useState, createContext } from "react";
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom';
 import CadastroPage from './pages/CadastroPage/CadastroPage'
 import HomePage from "./pages/HomePage/HomePage";
+import HojePage from "./pages/HojePage/HojePage";
 import HabitosPage from "./pages/HabitosPage/HabitosPage";
 import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
