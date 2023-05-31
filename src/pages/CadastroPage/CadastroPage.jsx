@@ -1,13 +1,14 @@
 import styled from "styled-components"
 import axios from 'axios';
 import React, { useState } from "react";
-import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { useLocation, useNavigate, Link, useContext } from 'react-router-dom';
 import ContainerInputs from "../../components/ContainerInputs"
 import Logo from "../../components/Logo";
 import Input from "../../components/Input";
 import LargeBtn from "../../components/LargeBtn";
 import { InfinitySpin } from "react-loader-spinner";
 import Swal from 'sweetalert2';
+import { UserContext } from "../../App"
 
 export default function SeatsPage(props) {
     const [loading, setLoading] = useState(false);
@@ -16,6 +17,10 @@ export default function SeatsPage(props) {
     const [password, setPassword] = useState("");
     const [nome, setNome] = useState("")
     const [urlImg, setUrlImg] = useState("")
+
+    const { dataUser, setDataUser } = useContext(UserContext);
+
+    console.log(dataUser)
 
     const loadIcon = (
         <InfinitySpin 

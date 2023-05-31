@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Logo from "../../components/Logo";
 import Input from "../../components/Input";
@@ -8,6 +8,7 @@ import LargeBtn from "../../components/LargeBtn";
 import ContainerInputs from "../../components/ContainerInputs";
 import { InfinitySpin } from "react-loader-spinner";
 import Swal from 'sweetalert2';
+import { UserContext } from "../../App"
 
 export default function HomePage(props){
     const navigateTo = useNavigate();
@@ -15,7 +16,8 @@ export default function HomePage(props){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const [respostaServidor, setRespostaServidor] = useState("")
+    const { dataUser, setDataUser } = useContext(UserContext);
+
 
     const loadIcon = (
         <InfinitySpin 
@@ -45,8 +47,9 @@ export default function HomePage(props){
         setLoading(true);
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", postData)
             .then(response => {
-                navigateTo("/habitos")
+                navigateTo("/cadastro")
                 setLoading(false);
+                setDataUser(response.data)
             })
             .catch(error => {
                 setLoading(false);
