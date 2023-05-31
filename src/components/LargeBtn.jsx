@@ -18,4 +18,7 @@ const SCButton = styled.button`
     font-family: "Lexend Deca";
     border-radius: 4.63636px;
     border: 1px solid #52B6FF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

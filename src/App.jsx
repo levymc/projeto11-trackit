@@ -36,16 +36,16 @@ export default function App() {
             <Container>
               <Router>
                   <Routes>
-                      {/* <Route path="/" element={
+                      <Route path="/" element={
                           <HomePage/>
                       }>
-                      </Route> */}
+                      </Route>
                       <Route path="/cadastro" element={
                           <CadastroPage
                           />
                       }>
                       </Route>
-                      <Route path="/" element={
+                      <Route path="/h" element={
                           <HabitosPage
                           />
                       }>

@@ -8,6 +8,8 @@ import React, { useState } from "react";
 export default function HabitosPage() {
   const [isNewHabit, setIsNewHabit] = useState(false);
 
+  
+
   return (
     <PageContainer>
       <NavContainer />
