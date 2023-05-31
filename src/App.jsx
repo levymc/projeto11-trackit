@@ -7,7 +7,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import HabitosPage from "./pages/HabitosPage/HabitosPage";
 import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
-
+import Swal from 'sweetalert2';
 
 
 export default function App() {

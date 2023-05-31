@@ -7,6 +7,7 @@ import Logo from "../../components/Logo";
 import Input from "../../components/Input";
 import LargeBtn from "../../components/LargeBtn";
 import { InfinitySpin } from "react-loader-spinner";
+import Swal from 'sweetalert2';
 
 export default function SeatsPage(props) {
     const [loading, setLoading] = useState(false);
@@ -35,10 +36,14 @@ export default function SeatsPage(props) {
             .then(response => {
                 console.log(response.data)
                 setLoading(false);
+                navigateTo("/");
             })
             .catch(error => {
                 setLoading(false);
-                console.log(error)
+                Swal.fire({
+                    title: error.response.data.message,
+                    confirmButtonColor: "#52B6FF",
+                })
             });
     }
         
