@@ -3,7 +3,14 @@ import styled from "styled-components"
 export default function Input(props){
     return(
         <>
-            <SCInput type={props.type} onChange={props.onChange} placeholder={props.placeholder}></SCInput>
+            <SCInput 
+                disabled={props.disabled} 
+                type={props.type} 
+                onChange={props.onChange} 
+                placeholder={props.placeholder}
+            >
+
+            </SCInput>
         </>
     )
 }

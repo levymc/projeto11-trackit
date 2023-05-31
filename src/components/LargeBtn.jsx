@@ -4,7 +4,11 @@ import styled from "styled-components"
 export default function LargeBtn(props){
     return (
         <>
-            <SCButton>{props.nome}</SCButton>
+            <SCButton 
+                disabled={props.disabled}
+            >
+                {props.nome}
+            </SCButton>
         </>
     )
 }

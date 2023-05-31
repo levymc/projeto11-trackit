@@ -68,11 +68,17 @@ export default function HomePage(props){
                 <ContainerInputs onSubmit={handleLogin}>
                     {campos.map((campo, i) => {
                         return (
-                            <Input key={i} type={i === 0 ? 'email' : 'password'} placeholder={campo.name} onChange={(e) => campo.setVar(e.target.value)} />
+                            <Input 
+                            disabled={loading} 
+                            key={i} 
+                            type={i === 0 ? 'email' : 'password'} 
+                            placeholder={campo.name} 
+                            onChange={(e) => campo.setVar(e.target.value)} />
                         )
                     })}
                     <LargeBtn 
                         nome= {loading ? loadIcon : "Entrar"}
+                        disabled={loading}
                     >
                     </LargeBtn>
                     <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
