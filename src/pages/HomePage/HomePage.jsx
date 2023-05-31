@@ -39,22 +39,20 @@ export default function HomePage(props){
     ];
 
     const enviarLogin = () =>{
-        if (loading) {
-            const postData = {
-                email: email,
-                password: password
-            };
-            axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", postData)
-                .then(response => {
-                    // Lógica para lidar com a resposta do servidor
-                    setRespostaServidor(response.data);
-                    setLoading(false);
-                })
-                .catch(error => {
-                    // Lógica para lidar com erros
-                    setLoading(false);
-                });
-        }
+        const postData = {
+            email: email,
+            password: password
+        };
+        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", postData)
+            .then(response => {
+                // Lógica para lidar com a resposta do servidor
+                setRespostaServidor(response.data);
+                setLoading(false);
+            })
+            .catch(error => {
+                // Lógica para lidar com erros
+                setLoading(false);
+            });
     }
         
 
@@ -74,7 +72,7 @@ export default function HomePage(props){
                         )
                     })}
                     <LargeBtn 
-                        nome= {(respostaServidor.length == 0 && !loading)? loadIcon : "Entrar"}
+                        nome= {respostaServidor.length == 0 ? loadIcon : "Entrar"}
                         onClick={handleLogin}>
                     </LargeBtn>
                     <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>

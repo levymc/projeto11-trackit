@@ -12,7 +12,7 @@ import ResetStyle from "./style/ResetStyle";
 
 export default function App() {
 
-    axios.defaults.headers.common['Authorization'] = '6474ae917de100807b1b88ae';
+    axios.defaults.headers.common['Authorization'] = 'OIvqTxES0ukZ2VJ7BUguGPDu';
 
     const [allEntries, setAllEntries] = useState([]);
 
