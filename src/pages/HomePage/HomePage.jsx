@@ -32,9 +32,13 @@ export default function HomePage(props){
     const campos = [
         {
             name: "email",
+            var: email,
+            setVar: setEmail,
         },
         {
             name: "senha",
+            var: password,
+            setVar: setPassword,
         },
     ];
 
@@ -43,6 +47,7 @@ export default function HomePage(props){
             email: email,
             password: password
         };
+        setLoading(true);
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login", postData)
             .then(response => {
                 // Lógica para lidar com a resposta do servidor
@@ -50,14 +55,15 @@ export default function HomePage(props){
                 setLoading(false);
             })
             .catch(error => {
-                // Lógica para lidar com erros
+                setRespostaServidor(error);
                 setLoading(false);
             });
     }
         
 
-    const handleLogin = () => {
-        setLoading(true);
+    const handleLogin = (e) => {
+        console.log(email,password)
+        e.preventDefault();
         enviarLogin();
     };
 
@@ -65,15 +71,15 @@ export default function HomePage(props){
         <>
             <ContainerHome>
                 <Logo />
-                <ContainerInputs>
+                <ContainerInputs onSubmit={handleLogin}>
                     {campos.map((campo, i) => {
                         return (
-                            <Input key={i} placeholder={campo.name} />
+                            <Input key={i} type={i === 0 ? 'email' : 'password'} placeholder={campo.name} onChange={(e) => campo.setVar(e.target.value)} />
                         )
                     })}
                     <LargeBtn 
-                        nome= {respostaServidor.length == 0 ? loadIcon : "Entrar"}
-                        onClick={handleLogin}>
+                        nome= {loading ? loadIcon : "Entrar"}
+                    >
                     </LargeBtn>
                     <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
                 </ContainerInputs>

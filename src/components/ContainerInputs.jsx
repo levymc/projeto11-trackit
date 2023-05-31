@@ -1,7 +1,7 @@
 import styled from "styled-components"
 
 
-const ContainerInputs = styled.div`
+const ContainerInputs = styled.form`
     background-color: #FFFFFF;
     width: 100%;
     height: auto;
