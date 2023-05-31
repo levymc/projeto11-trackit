@@ -17,6 +17,7 @@ const ContainerFooter = styled.div`
     bottom: 0;
     width:100%;
     /* background-color: pink; */
+    padding-bottom: 1.5em;
     height: 6rem;
     display: flex;
     justify-content: space-evenly;
