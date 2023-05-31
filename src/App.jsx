@@ -1,6 +1,6 @@
 import styled from "styled-components"
 import axios from 'axios';
-import React, { useState } from "react";
+import React, { useState, createContext } from "react";
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom';
 import CadastroPage from './pages/CadastroPage/CadastroPage'
 import HomePage from "./pages/HomePage/HomePage";
@@ -9,12 +9,13 @@ import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
 import Swal from 'sweetalert2';
 
+export const UserContext = createContext();
 
 export default function App() {
 
     axios.defaults.headers.common['Authorization'] = 'OIvqTxES0ukZ2VJ7BUguGPDu';
 
-    const [allEntries, setAllEntries] = useState([]);
+    const [dataUser, setDataUser] = useState({})
 
     const getEntries = async () => {
       try {
@@ -31,7 +32,7 @@ export default function App() {
     }, []);
 
     return (
-        <>
+      <UserContext.Provider value={{ dataUser, setDataUser }}>
           <ResetStyle />
             <Container>
               <Router>
@@ -53,7 +54,7 @@ export default function App() {
                   </Routes>
               </Router>
             </Container>
-        </>
+      </UserContext.Provider>
     )
 }
 
