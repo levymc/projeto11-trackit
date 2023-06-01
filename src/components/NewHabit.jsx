@@ -18,9 +18,10 @@ export default function NewHabit(props){
         props.setIsNewHabit(false)
     }
 
+    console.log(props.onChange, props.newHabit)
     return (
         <ContainerNewHabit>
-            <Input placeholder="nome do hábito"/>
+            <Input onChange={props.onChange} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
             <ContainerLetters>
                 {days.map((day, i) => 
                     <Letter 
@@ -36,7 +37,7 @@ export default function NewHabit(props){
             </ContainerLetters>
             <ContainerBtns>
                 <button id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
-                <button id="salvarBtn" onClick={() => {console.log(daySelected)}}>Salvar</button>
+                <button id="salvarBtn" onClick={() => {console.log(props.newHabit)}}>Salvar</button>
             </ContainerBtns>
         </ContainerNewHabit>
     )
