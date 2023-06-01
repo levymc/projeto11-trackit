@@ -6,8 +6,12 @@ import React, { useState, useEffect, useContext } from "react";
 export default function Card(props){
 
 
-    const [isSelected, setIsSelected] = useState(false)
 
+    const changeSelect = (index, newValue) => {
+          const newArray = [...props.isSelected];
+          newArray[index] = newValue;
+          props.setIsSelected(newArray);
+    };
     // Receber do servidor(useEffect) as Cards
 
     return(
@@ -17,7 +21,7 @@ export default function Card(props){
                 <h2>Sequência atual: {props.recordAtual}</h2>
                 <h2>Seu Recorde: {props.selfRecord}</h2>
             </TextContainer>
-            <CheckContainer isSelected={isSelected} onClick={() => {setIsSelected(!isSelected)}}>
+            <CheckContainer isSelected={props.isSelected[props.index]} onClick={() => {changeSelect(props.index, !props.isSelected[props.index])}}>
                 <AiOutlineCheck />
             </CheckContainer>
         </CardContainer>

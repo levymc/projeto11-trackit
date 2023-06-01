@@ -21,12 +21,20 @@ export default function HomePage(props){
     const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase());
     const [dataAtual, setDataAtual] = useState(dataFormatada);
 
-    const [dataCards, setDataCards] = useState([{
-        text: "Ler um Livro!",
-        recordAtual: "4",
-        selfRecord: "69",
-    }])
+    const [dataCards, setDataCards] = useState([
+        {
+            text: "Ler um Livro!",
+            recordAtual: "4",
+            selfRecord: "69",
+        },
+        {
+            text: "Ler um Livro!",
+            recordAtual: "4",
+            selfRecord: "69",
+        },
+    ]);
 
+    const [isSelected, setIsSelected] = useState(dataCards.map((card, i) => false))
 
     console.log(dataCards)
 
@@ -56,6 +64,9 @@ export default function HomePage(props){
                         text = {data.text}
                         recordAtual = {data.recordAtual}
                         selfRecord = {data.selfRecord}
+                        isSelected = {isSelected}
+                        setIsSelected = {setIsSelected}
+                        index = {i}
                     />
                 )}
                 
