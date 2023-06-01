@@ -45,6 +45,6 @@ const LogoNav = styled.img`
 
 const LogoUser = styled.img`
     cursor: pointer;
-    border-radius: 98.5px;
-    width: 80px;
+    border-radius: 50%;
+    width: 3.5rem;
 `
