@@ -47,7 +47,11 @@ export default function HomePage(props){
                     <h1>{dataAtual}</h1>
                     <h2>{percent === 0 && "Nenhum hábito concluído ainda"}</h2>
                 </Topo>
-                <Card text="Olaa"/>
+                <Card 
+                    text= "Ler um Livro!"
+                    recordAtual = "4"
+                    selfRecord = "69"
+                />
                 
             </ContainerHoje>
         </>
@@ -63,7 +67,8 @@ const ContainerHoje = styled.div`
     /* justify-content: center; */
     gap: 1em;
     background-color: #E5E5E5;
-    height: 100%;
+    max-height: 100%;
+    min-height: 100vh;
     border-radius: 10px;
     padding-left: 0.75em; padding-right: 0.75em; padding-bottom: 0.75em;
 `;
