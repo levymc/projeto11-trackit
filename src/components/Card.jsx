@@ -1,7 +1,12 @@
 import styled from "styled-components";
+import { AiOutlineCheck } from "react-icons/ai";
+import React, { useState, useEffect, useContext } from "react";
 
 
 export default function Card(props){
+
+    const [isSelected, setIsSelected] = useState(false)
+
     return(
         <CardContainer>
             <TextContainer>
@@ -9,6 +14,9 @@ export default function Card(props){
                 <h2>Sequência atual: {props.recordAtual}</h2>
                 <h2>Seu Recorde: {props.selfRecord}</h2>
             </TextContainer>
+            <CheckContainer isSelected={isSelected}>
+                <AiOutlineCheck />
+            </CheckContainer>
         </CardContainer>
     )
 }
@@ -16,9 +24,13 @@ export default function Card(props){
 const CardContainer = styled.div`
     padding: 1rem;
     display:flex;
+    align-items: center;
+    /* justify-content: space-around; */
     background-color: white;
     border-radius: 10px;
     width: 100%;
+    gap: 2rem;
+    position: relative;
 `
 
 const TextContainer = styled.div`
@@ -35,4 +47,20 @@ const TextContainer = styled.div`
         line-height: 16px;
         color: #666666;
     }
+`
+
+const CheckContainer = styled.div`
+    position: absolute;
+    right: 1rem;
+    padding: 0.5rem;
+    font-size: 50px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${(props) => !props.isSelected && "#E7E7E7"};
+    border: 1px solid #E7E7E7;
+    border-radius: 5px;
+    color:white;
+    cursor: pointer;
 `
