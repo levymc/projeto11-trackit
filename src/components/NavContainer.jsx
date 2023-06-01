@@ -2,15 +2,18 @@ import styled from "styled-components"
 import trackitLogo from '../assets/trackitLogo.svg';
 import bob from '../assets/bob.svg';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-
+import React, { useState, useEffect, useContext } from "react";
+import UserContext from "./UserContext";
 
 export default function Topo(){
     const navigateTo = useNavigate();
 
+    const {dataUser, setDataUser } = useContext(UserContext);
+    
     return (
         <NavContainer>
             <LogoNav onClick={() => navigateTo("/")} src={trackitLogo}></LogoNav> {/* Tirar o navigateTo */}
-            <LogoNav onClick={() => navigateTo("/cadastro")} src={bob}></LogoNav> {/* Tirar o navigateTo */}
+            <LogoUser onClick={() => console.log(dataUser.image)} src={dataUser.image}></LogoUser> {/* Tirar o navigateTo */}
         </NavContainer>
     )
 }
@@ -35,6 +38,13 @@ const NavContainer = styled.div`
         color: #E8833A;
     }
 `
+
 const LogoNav = styled.img`
     cursor: pointer;
+`
+
+const LogoUser = styled.img`
+    cursor: pointer;
+    border-radius: 98.5px;
+    width: 80px;
 `

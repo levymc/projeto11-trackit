@@ -17,7 +17,7 @@ export default function HabitosPage() {
   const [token, setToken] = useState(dataUser.token)
   const [newHabit, setNewHabit] = useState("")
 
-  console.log(dataUser)
+  console.log(dataUser.image)
 
   const getHabits = async () => {
       try {
