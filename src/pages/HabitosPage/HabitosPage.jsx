@@ -13,7 +13,7 @@ export default function HabitosPage() {
   const [isNewHabit, setIsNewHabit] = useState(false);
   const [habits, setHabits] = useState([])
 
-  const { dataUser, setDataUser } = useContext(UserContext);
+  const {dataUser, setDataUser } = useContext(UserContext);
   const [token, setToken] = useState(dataUser.token)
 
   console.log(dataUser)
@@ -47,7 +47,7 @@ export default function HabitosPage() {
       <ConteudoContainer>
         <Cabecalho setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} />
         <NewHabitContainer isNewHabit={isNewHabit}>
-          {isNewHabit && <NewHabit />}
+          {isNewHabit && <NewHabit setIsNewHabit={setIsNewHabit} />}
         </NewHabitContainer>
         {habits.length===0 && <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>}
       </ConteudoContainer>

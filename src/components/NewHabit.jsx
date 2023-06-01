@@ -2,7 +2,7 @@ import styled from "styled-components"
 import Input from "./Input"
 import React, { useState } from "react";
 
-export default function NewHabit(){
+export default function NewHabit(props){
 
     const days = ["D", "S", "T", "Q", "Q", "S", "S"]
 
@@ -12,7 +12,11 @@ export default function NewHabit(){
           const newArray = [...daySelected];
           newArray[index] = newValue;
           setDaySelected(newArray);
-      };
+    };
+    
+    const cancelarBtn = () => {
+        props.setIsNewHabit(false)
+    }
 
     return (
         <ContainerNewHabit>
@@ -31,7 +35,7 @@ export default function NewHabit(){
                 )}
             </ContainerLetters>
             <ContainerBtns>
-                <button id="cancelarBtn">Cancelar</button>
+                <button id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
                 <button id="salvarBtn" onClick={() => {console.log(daySelected)}}>Salvar</button>
             </ContainerBtns>
         </ContainerNewHabit>
