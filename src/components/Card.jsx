@@ -5,6 +5,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 export default function Card(props){
 
+
     const [isSelected, setIsSelected] = useState(false)
 
     // Receber do servidor(useEffect) as Cards
