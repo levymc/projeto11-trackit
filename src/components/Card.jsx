@@ -7,6 +7,8 @@ export default function Card(props){
 
     const [isSelected, setIsSelected] = useState(false)
 
+    // Receber do servidor(useEffect) as Cards
+
     return(
         <CardContainer>
             <TextContainer>
@@ -14,7 +16,7 @@ export default function Card(props){
                 <h2>Sequência atual: {props.recordAtual}</h2>
                 <h2>Seu Recorde: {props.selfRecord}</h2>
             </TextContainer>
-            <CheckContainer isSelected={isSelected}>
+            <CheckContainer isSelected={isSelected} onClick={() => {setIsSelected(!isSelected)}}>
                 <AiOutlineCheck />
             </CheckContainer>
         </CardContainer>
@@ -58,7 +60,7 @@ const CheckContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${(props) => !props.isSelected && "#E7E7E7"};
+    background-color: ${(props) => !props.isSelected ? "#E7E7E7" : "#8FC549"};
     border: 1px solid #E7E7E7;
     border-radius: 5px;
     color:white;
