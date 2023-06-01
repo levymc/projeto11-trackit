@@ -24,8 +24,14 @@ export default function HomePage(props){
     const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase());
     const [dataAtual, setDataAtual] = useState(dataFormatada);
 
+    const [dataCards, setDataCards] = useState([{
+        text: "Ler um Livro!",
+        recordAtual: "4",
+        selfRecord: "69",
+    }])
 
-    console.log(dataAtual)
+
+    console.log(dataCards)
 
     const { dataUser, setDataUser } = useContext(UserContext);
 
@@ -47,11 +53,14 @@ export default function HomePage(props){
                     <h1>{dataAtual}</h1>
                     <h2>{percent === 0 && "Nenhum hábito concluído ainda"}</h2>
                 </Topo>
-                <Card 
-                    text= "Ler um Livro!"
-                    recordAtual = "4"
-                    selfRecord = "69"
-                />
+                {dataCards.map((data, i) => 
+                    <Card 
+                        text = {data.text}
+                        recordAtual = {data.recordAtual}
+                        selfRecord = {data.selfRecord}
+                    />
+                )}
+                
                 
             </ContainerHoje>
         </>
