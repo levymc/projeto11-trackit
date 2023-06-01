@@ -6,6 +6,7 @@ import Logo from "../../components/Logo";
 import Input from "../../components/Input";
 import LargeBtn from "../../components/LargeBtn";
 import ContainerInputs from "../../components/ContainerInputs";
+import Card from "../../components/Card";
 import { InfinitySpin } from "react-loader-spinner";
 import Swal from 'sweetalert2';
 import UserContext from "../../components/UserContext";
@@ -17,6 +18,7 @@ import NavContainer from "../../components/NavContainer";
 export default function HomePage(props){
     const navigateTo = useNavigate();
     const [loading, setLoading] = useState(false);
+    const [percent, setPercent] = useState(0);
 
     dayjs.locale('pt-br');
     const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase());
@@ -43,8 +45,9 @@ export default function HomePage(props){
                 
                 <Topo>
                     <h1>{dataAtual}</h1>
-                    <h2>Nenhum hábito concluído ainda</h2>
+                    <h2>{percent === 0 && "Nenhum hábito concluído ainda"}</h2>
                 </Topo>
+                <Card text="Olaa"/>
                 
             </ContainerHoje>
         </>
@@ -59,9 +62,10 @@ const ContainerHoje = styled.div`
     align-items: start;
     /* justify-content: center; */
     gap: 1em;
-    background-color: #FFFFFF;
+    background-color: #E5E5E5;
+    height: 100%;
     border-radius: 10px;
-    padding-left: 0.75em; padding-right: 0.75em;
+    padding-left: 0.75em; padding-right: 0.75em; padding-bottom: 0.75em;
 `;
 
 const Topo = styled.div`
