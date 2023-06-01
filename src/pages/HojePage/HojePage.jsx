@@ -2,10 +2,7 @@ import styled from "styled-components";
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import Logo from "../../components/Logo";
-import Input from "../../components/Input";
-import LargeBtn from "../../components/LargeBtn";
-import ContainerInputs from "../../components/ContainerInputs";
+import Footer from "../../components/Footer";
 import Card from "../../components/Card";
 import { InfinitySpin } from "react-loader-spinner";
 import Swal from 'sweetalert2';
@@ -55,13 +52,14 @@ export default function HomePage(props){
                 </Topo>
                 {dataCards.map((data, i) => 
                     <Card 
+                        key = {i}
                         text = {data.text}
                         recordAtual = {data.recordAtual}
                         selfRecord = {data.selfRecord}
                     />
                 )}
                 
-                
+                <Footer />
             </ContainerHoje>
         </>
     );

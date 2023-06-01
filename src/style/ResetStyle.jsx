@@ -21,6 +21,7 @@ const ResetStyle = createGlobalStyle`
 		/* font: inherit; */
 		font-family: 'Lexend Deca', sans-serif;
 		vertical-align: baseline;
+		box-sizing: border-box;
 	}
 	/* body{
 		padding-bottom: 3em !important;

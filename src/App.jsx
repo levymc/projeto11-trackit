@@ -56,6 +56,11 @@ export default function App() {
                           />
                       }>
                       </Route>
+                      <Route path="/historico" element={
+                          <HojePage
+                          />
+                      }>
+                      </Route>
                   </Routes>
               </Router>
             </Container>

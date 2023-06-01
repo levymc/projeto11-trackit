@@ -1,13 +1,15 @@
 import styled from "styled-components"
 import btnhome from '../assets/btnhome.svg';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
 
 export default function Footer(){
+    const navigateTo = useNavigate();
 
     return (
         <ContainerFooter>
-            <SCH2>Hábitos</SCH2>
-            <HomeBtn>Hoje</HomeBtn>
-            <SCH2>Histórico</SCH2>
+            <SCH2 onClick={() => {navigateTo("/habitos")}}>Hábitos</SCH2>
+            <HomeBtn onClick={() => {navigateTo("/hoje")}}>Hoje</HomeBtn>
+            <SCH2 onClick={() => {navigateTo("/historico")}}>Histórico</SCH2>
         </ContainerFooter>
     )
 }

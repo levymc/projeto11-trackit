@@ -18,7 +18,7 @@ export default function Topo(){
 
 const NavContainer = styled.div`
     padding-left: 1rem; padding-right: 1rem;
-    width: 100%;
+    width: 100vw;
     height: 70px;
     display: flex;
     align-items: center;
