@@ -17,6 +17,10 @@ export default function HomePage(props){
     const [loading, setLoading] = useState(false);
     const [percent, setPercent] = useState(0);
 
+    const { dataUser, setDataUser } = useContext(UserContext);
+
+    console.log(dataUser)
+     
     dayjs.locale('pt-br');
     const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase());
     const [dataAtual, setDataAtual] = useState(dataFormatada);
@@ -38,7 +42,6 @@ export default function HomePage(props){
 
     console.log(dataCards)
 
-    const { dataUser, setDataUser } = useContext(UserContext);
 
 
     const loadIcon = (

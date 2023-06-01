@@ -17,20 +17,6 @@ export default function App() {
 
     const [dataUser, setDataUser] = useState({})
 
-    // const getEntries = async () => {
-    //   try {
-    //     const response = await axios.get('https://6474ae917de100807b1b88ae.mockapi.io/api/v1/entrada');
-    //     setAllEntries(response.data);
-    //   } catch (error) {
-    //     console.error('Erro ao buscar os filmes:', error);
-    //     setAllEntries([]);
-    //   }
-    // };
-  
-    // React.useEffect(() => {
-    //   getEntries();
-    // }, []);
-
     return (
       <UserContext.Provider value={{ dataUser, setDataUser }}>
           <ResetStyle />

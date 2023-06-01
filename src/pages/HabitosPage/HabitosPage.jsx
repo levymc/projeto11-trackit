@@ -3,10 +3,41 @@ import NavContainer from "../../components/NavContainer";
 import Cabecalho from "../../components/Cabecalho";
 import Footer from "../../components/Footer";
 import NewHabit from "../../components/NewHabit";
-import React, { useState } from "react";
+import Swal from "sweetalert2";
+import axios from "axios";
+import React, { useState, useEffect, useContext } from "react";
+import UserContext from "../../components/UserContext";
+
 
 export default function HabitosPage() {
   const [isNewHabit, setIsNewHabit] = useState(false);
+  const [habits, setHabits] = useState([])
+
+  const { dataUser, setDataUser } = useContext(UserContext);
+
+  console.log(dataUser)
+
+  const getHabits = async () => {
+      try {
+        const response = await axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setHabits(response.data);
+      } catch (error) {
+        console.error('Erro ao buscar os filmes:', error);
+        Swal.fire({
+          icon: "error",
+          title: "Algum erro ocorreu!",
+          confirmButtonColor: "#52B6FF",
+        })
+      }
+    };
+  
+    React.useEffect(() => {
+      getHabits();
+    }, []);
 
   return (
     <PageContainer>
