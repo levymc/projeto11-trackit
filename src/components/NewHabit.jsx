@@ -70,11 +70,12 @@ export default function NewHabit(props){
 
     console.log(props.onChange, props.newHabit)
     return (
-        <ContainerNewHabit>
-            <Input disables={loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
+        <ContainerNewHabit data-test="habit-create-container">
+            <Input dataTest="habit-name-input" disabled={loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
             <ContainerLetters>
                 {days.map((day, i) => 
                     <Letter 
+                        data-test="habit-day"
                         disabled={loading}
                         key={i} 
                         selected = {daySelected[i]}
@@ -87,8 +88,8 @@ export default function NewHabit(props){
                 )}
             </ContainerLetters>
             <ContainerBtns>
-                <button id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
-                <button id="salvarBtn" onClick={enviarNewHabit}>{!loading ? "Salvar" : loadIcon}</button>
+                <button data-test="habit-create-cancel-btn" id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
+                <button data-test="habit-create-save-btn" id="salvarBtn" onClick={enviarNewHabit}>{!loading ? "Salvar" : loadIcon}</button>
             </ContainerBtns>
         </ContainerNewHabit>
     )

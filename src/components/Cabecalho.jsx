@@ -4,8 +4,10 @@ export default function Cabecalho(props){
     return (
         <ContainerCabecalho>
             <h1>Meus hábitos</h1>
-            <SCButton onClick={() => {
-                props.setIsNewHabit(!props.isNewHabit)
+            <SCButton 
+                data-test="habit-create-btn"
+                onClick={() => {
+                    props.setIsNewHabit(!props.isNewHabit)
             }}>+</SCButton>
         </ContainerCabecalho>
     )

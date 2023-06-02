@@ -18,8 +18,6 @@ export default function HabitosPage() {
 
   console.log(dataUser.image)
 
-  
-
   const getHabits = async () => {
       try {
         const response = await axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', {
@@ -49,7 +47,7 @@ export default function HabitosPage() {
 
       <ConteudoContainer>
         <Cabecalho setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} />
-        <NewHabitContainer isNewHabit={isNewHabit}>
+        <NewHabitContainer data-test="habit-create-container" isNewHabit={isNewHabit}>
           {isNewHabit && <NewHabit setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
         </NewHabitContainer>
         {habits.length===0 && <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> }
