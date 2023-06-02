@@ -8,6 +8,7 @@ export default function Input(props){
                 type={props.type} 
                 onChange={props.onChange} 
                 placeholder={props.placeholder}
+                data-test={props.dataTest}
             >
 
             </SCInput>
