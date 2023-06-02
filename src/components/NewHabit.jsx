@@ -1,22 +1,59 @@
 import styled from "styled-components"
 import Input from "./Input"
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import UserContext from "./UserContext";
 
 export default function NewHabit(props){
 
     const days = ["D", "S", "T", "Q", "Q", "S", "S"]
 
     const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
+    const [indexes, setIndexes] = useState([]); 
+
+    const {dataUser, setDataUser } = useContext(UserContext);
+    const [token, setToken] = useState(dataUser.token)
+
 
     const changeSelect = (index, newValue) => {
-          const newArray = [...daySelected];
-          newArray[index] = newValue;
-          setDaySelected(newArray);
+        const newArray = [...daySelected];
+        const newIndexes = [...indexes];
+        newArray[index] = newValue;
+        newIndexes.push(index);
+        setDaySelected(newArray);
+        setIndexes(newIndexes);
     };
+
+    
+    console.log(indexes)
     
     const cancelarBtn = () => {
         props.setIsNewHabit(false)
     }
+
+
+    const enviarNewHabit = () => {
+        const data = {
+            name: props.newHabit,
+            days: indexes
+        }
+        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", data, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          }).then(response => {
+            console.log(response.data)
+        }).catch(error => {
+            console.error('Erro:', error);
+            Swal.fire({
+                icon: "error",
+                title: "Algum erro ocorreu!",
+                confirmButtonColor: "#52B6FF",
+            })
+        })
+    }
+    
 
     console.log(props.onChange, props.newHabit)
     return (
@@ -37,7 +74,7 @@ export default function NewHabit(props){
             </ContainerLetters>
             <ContainerBtns>
                 <button id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
-                <button id="salvarBtn" onClick={() => {console.log(props.newHabit)}}>Salvar</button>
+                <button id="salvarBtn" onClick={enviarNewHabit}>Salvar</button>
             </ContainerBtns>
         </ContainerNewHabit>
     )
