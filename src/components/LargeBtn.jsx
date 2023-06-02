@@ -6,6 +6,7 @@ export default function LargeBtn(props){
         <>
             <SCButton 
                 disabled={props.disabled}
+                data-test={props.dataTest}
             >
                 {props.nome}
             </SCButton>

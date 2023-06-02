@@ -64,21 +64,25 @@ export default function SeatsPage(props) {
             name: "email",
             type: "email",
             setVar: setEmail,
+            dataTest: "email-input",
         },
         {
             name: "senha",
             type: "password",
             setVar: setPassword,
+            dataTest: "password-input",
         },
         {
             name: "nome",
             type: "text",
             setVar: setNome,
+            dataTest: "user-name-input",
         },
         {
             name: "foto",
             type: "url",
             setVar: setUrlImg,
+            dataTest: "user-image-input",
         },
     ]
 
@@ -97,8 +101,8 @@ export default function SeatsPage(props) {
                         />
                     )
                 })}
-                <LargeBtn disabled={loading} nome={loading ? loadIcon : "Cadastrar"} />
-                <Link to="/" className="link">Já tem uma conta? Faça login!</Link>
+                <LargeBtn dataTest="signup-btn" disabled={loading} nome={loading ? loadIcon : "Cadastrar"} />
+                <Link data-test="login-link" to="/" className="link">Já tem uma conta? Faça login!</Link>
             </ContainerInputs>
         </PageContainer>
     )
