@@ -6,10 +6,10 @@ export default function Footer(){
     const navigateTo = useNavigate();
 
     return (
-        <ContainerFooter>
-            <SCH2 onClick={() => {navigateTo("/habitos")}}>Hábitos</SCH2>
-            <HomeBtn onClick={() => {navigateTo("/hoje")}}>Hoje</HomeBtn>
-            <SCH2 onClick={() => {navigateTo("/historico")}}>Histórico</SCH2>
+        <ContainerFooter data-test="menu">
+            <SCH2 data-test="habit-link" onClick={() => {navigateTo("/habitos")}}>Hábitos</SCH2>
+            <HomeBtn data-test="today-link" onClick={() => {navigateTo("/hoje")}}>Hoje</HomeBtn>
+            <SCH2 data-test="history-link" onClick={() => {navigateTo("/historico")}}>Histórico</SCH2>
         </ContainerFooter>
     )
 }
