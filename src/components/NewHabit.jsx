@@ -52,13 +52,15 @@ export default function NewHabit(props){
                 confirmButtonColor: "#52B6FF",
             })
         })
+        props.setNewHabit("")
+        setDaySelected(days.map((day, i) => false))
     }
     
 
     console.log(props.onChange, props.newHabit)
     return (
         <ContainerNewHabit>
-            <Input onChange={props.onChange} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
+            <Input onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
             <ContainerLetters>
                 {days.map((day, i) => 
                     <Letter 
