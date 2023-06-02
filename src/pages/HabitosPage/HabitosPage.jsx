@@ -8,7 +8,6 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../components/UserContext";
 
-
 export default function HabitosPage() {
   const [isNewHabit, setIsNewHabit] = useState(false);
   const [habits, setHabits] = useState([])
@@ -18,6 +17,8 @@ export default function HabitosPage() {
   const [newHabit, setNewHabit] = useState("")
 
   console.log(dataUser.image)
+
+  
 
   const getHabits = async () => {
       try {

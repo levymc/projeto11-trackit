@@ -4,10 +4,12 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import UserContext from "./UserContext";
+import { InfinitySpin } from "react-loader-spinner";
 
 export default function NewHabit(props){
 
     const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+    const [loading, setLoading] = useState(false);
 
     const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
     const [indexes, setIndexes] = useState([]); 
@@ -15,6 +17,13 @@ export default function NewHabit(props){
     const {dataUser, setDataUser } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token)
 
+
+    const loadIcon = (
+        <InfinitySpin 
+            width='20'
+            color="black"
+        />
+      )
 
     const changeSelect = (index, newValue) => {
         const newArray = [...daySelected];
@@ -34,6 +43,7 @@ export default function NewHabit(props){
 
 
     const enviarNewHabit = () => {
+        setLoading(true)
         const data = {
             name: props.newHabit,
             days: indexes
@@ -44,6 +54,7 @@ export default function NewHabit(props){
             }
           }).then(response => {
             console.log(response.data)
+            setLoading(false)
         }).catch(error => {
             console.error('Erro:', error);
             Swal.fire({
@@ -60,10 +71,11 @@ export default function NewHabit(props){
     console.log(props.onChange, props.newHabit)
     return (
         <ContainerNewHabit>
-            <Input onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
+            <Input disables={loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
             <ContainerLetters>
                 {days.map((day, i) => 
                     <Letter 
+                        disabled={loading}
                         key={i} 
                         selected = {daySelected[i]}
                         onClick={() =>{
@@ -76,7 +88,7 @@ export default function NewHabit(props){
             </ContainerLetters>
             <ContainerBtns>
                 <button id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
-                <button id="salvarBtn" onClick={enviarNewHabit}>Salvar</button>
+                <button id="salvarBtn" onClick={enviarNewHabit}>{!loading ? "Salvar" : loadIcon}</button>
             </ContainerBtns>
         </ContainerNewHabit>
     )
