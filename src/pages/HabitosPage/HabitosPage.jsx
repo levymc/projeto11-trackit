@@ -42,6 +42,7 @@ export default function HabitosPage() {
       getHabits();
     }, []);
 
+  console.log(habits)
   return (
     <PageContainer>
       <NavContainer />
@@ -51,7 +52,7 @@ export default function HabitosPage() {
         <NewHabitContainer isNewHabit={isNewHabit}>
           {isNewHabit && <NewHabit setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
         </NewHabitContainer>
-        {habits.length===0 && <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p>}
+        {habits.length===0 && <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> }
       </ConteudoContainer>
       <Footer />
     </PageContainer>
