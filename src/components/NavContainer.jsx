@@ -11,9 +11,9 @@ export default function Topo(){
     const {dataUser, setDataUser } = useContext(UserContext);
     
     return (
-        <NavContainer>
+        <NavContainer data-test="header">
             <LogoNav onClick={() => navigateTo("/")} src={trackitLogo}></LogoNav> {/* Tirar o navigateTo */}
-            <LogoUser onClick={() => console.log(dataUser.image)} src={dataUser.image}></LogoUser> {/* Tirar o navigateTo */}
+            <LogoUser data-test="avatar" onClick={() => console.log(dataUser.image)} src={dataUser.image}></LogoUser> {/* Tirar o navigateTo */}
         </NavContainer>
     )
 }
