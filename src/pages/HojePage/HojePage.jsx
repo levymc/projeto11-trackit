@@ -13,36 +13,45 @@ import NavContainer from "../../components/NavContainer";
 
 
 export default function HomePage(props){
+    const {dataUser, setDataUser } = useContext(UserContext);
+    const [token, setToken] = useState(dataUser.token)
+
     const navigateTo = useNavigate();
     const [loading, setLoading] = useState(false);
     const [percent, setPercent] = useState(0);
 
-    const { dataUser, setDataUser } = useContext(UserContext);
+    const [dataCards, setDataCards] = useState([]);
 
-    console.log(dataUser)
-     
     dayjs.locale('pt-br');
     const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase());
     const [dataAtual, setDataAtual] = useState(dataFormatada);
 
-    const [dataCards, setDataCards] = useState([
-        {
-            text: "Ler um Livro!",
-            recordAtual: "4",
-            selfRecord: "69",
-        },
-        {
-            text: "Ler um Livro!",
-            recordAtual: "4",
-            selfRecord: "69",
-        },
-    ]);
+    const getCards = async () => {
+        try {
+          const response = await axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          setDataCards(response.data);
+          console.log(response.data)
+        } catch (error) {
+          console.error('Erro ao buscar os filmes:', error);
+          Swal.fire({
+            icon: "error",
+            title: "Algum erro ocorreu!",
+            confirmButtonColor: "#52B6FF",
+          })
+        }
+      };
+    
+      React.useEffect(() => {
+        getCards();
+      }, []);
+
+    
 
     const [isSelected, setIsSelected] = useState(dataCards.map((card, i) => false))
-
-    console.log(dataCards)
-
-
 
     const loadIcon = (
         <InfinitySpin 
@@ -64,9 +73,9 @@ export default function HomePage(props){
                 {dataCards.map((data, i) => 
                     <Card 
                         key = {i}
-                        text = {data.text}
-                        recordAtual = {data.recordAtual}
-                        selfRecord = {data.selfRecord}
+                        text = {data.name}
+                        recordAtual = {data.currentSequence}
+                        selfRecord = {data.highestSequence}
                         isSelected = {isSelected}
                         setIsSelected = {setIsSelected}
                         index = {i}
@@ -84,6 +93,7 @@ const ContainerHoje = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-bottom: 6rem;
     align-items: start;
     /* justify-content: center; */
     gap: 1em;

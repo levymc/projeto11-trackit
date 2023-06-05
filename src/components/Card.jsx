@@ -29,7 +29,7 @@ export default function Card(props){
 }
 
 const CardContainer = styled.div`
-    padding: 1rem;
+    padding: 1.25rem;
     display:flex;
     align-items: center;
     /* justify-content: space-around; */
