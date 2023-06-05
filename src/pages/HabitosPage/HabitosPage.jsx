@@ -18,7 +18,19 @@ export default function HabitosPage() {
 
   console.log(dataUser.image)
 
-  
+  const changeSelect = (index, newValue) => {
+      const newArray = [...daySelected];
+      const newIndexes = [...indexes];
+      newArray[index] = newValue;
+      newIndexes.push(index);
+      setDaySelected(newArray);
+      setIndexes(newIndexes);
+  };
+
+  const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+  const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
+  const [indexes, setIndexes] = useState([]); 
+
 
   const getHabits = async () => {
       try {
@@ -43,6 +55,8 @@ export default function HabitosPage() {
     }, []);
 
   console.log(habits)
+
+
   return (
     <PageContainer>
       <NavContainer />
@@ -50,7 +64,7 @@ export default function HabitosPage() {
       <ConteudoContainer>
         <Cabecalho setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} />
         <NewHabitContainer isNewHabit={isNewHabit}>
-          {isNewHabit && <NewHabit setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
+          {isNewHabit && <NewHabit setIndexes={setIndexes} indexes={indexes} days={days} daySelected={daySelected} setDaySelected={setDaySelected} changeSelect={changeSelect} setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
         </NewHabitContainer>
         {habits.length===0 && <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> }
       </ConteudoContainer>

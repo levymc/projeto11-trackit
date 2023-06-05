@@ -8,11 +8,7 @@ import { InfinitySpin } from "react-loader-spinner";
 
 export default function NewHabit(props){
 
-    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [loading, setLoading] = useState(false);
-
-    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
-    const [indexes, setIndexes] = useState([]); 
 
     const {dataUser, setDataUser } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token)
@@ -25,17 +21,7 @@ export default function NewHabit(props){
         />
       )
 
-    const changeSelect = (index, newValue) => {
-        const newArray = [...daySelected];
-        const newIndexes = [...indexes];
-        newArray[index] = newValue;
-        newIndexes.push(index);
-        setDaySelected(newArray);
-        setIndexes(newIndexes);
-    };
 
-    
-    console.log(indexes)
     
     const cancelarBtn = () => {
         props.setIsNewHabit(false)
@@ -46,7 +32,7 @@ export default function NewHabit(props){
         setLoading(true)
         const data = {
             name: props.newHabit,
-            days: indexes
+            days: props.indexes
         }
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", data, {
             headers: {
@@ -64,7 +50,7 @@ export default function NewHabit(props){
             })
         })
         props.setNewHabit("")
-        setDaySelected(days.map((day, i) => false))
+        props.setDaySelected(days.map((day, i) => false))
     }
     
 
@@ -73,13 +59,13 @@ export default function NewHabit(props){
         <ContainerNewHabit>
             <Input disables={loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
             <ContainerLetters>
-                {days.map((day, i) => 
+                {props.days.map((day, i) => 
                     <Letter 
                         disabled={loading}
                         key={i} 
-                        selected = {daySelected[i]}
+                        selected = {props.daySelected[i]}
                         onClick={() =>{
-                            changeSelect(i, !daySelected[i])
+                            props.changeSelect(i, !props.daySelected[i])
                         }}
                     >
                         {day}
