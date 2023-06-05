@@ -49,6 +49,7 @@ export default function NewHabit(props){
             }
           }).then(response => {
             console.log(response.data)
+            props.setIsNewHabit(false)
             props.setLoading(false)
             props.getHabits();
             setIndexes([]);
