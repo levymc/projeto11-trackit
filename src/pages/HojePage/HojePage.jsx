@@ -69,7 +69,7 @@ export default function HomePage(props) {
           <Topo percent={percent}>
             <h1 data-test="today">{dataAtual}</h1>
             <h2 data-test="today-counter">
-              {percent === 0
+              {!percent
                 ? "Nenhum hábito concluído ainda"
                 : percent + "% dos hábitos concluídos"}
             </h2>
@@ -123,6 +123,6 @@ const Topo = styled.div`
     h2{
         font-size: 17.976px;
         line-height: 22px;
-        color: ${(props) => props.percent === 0 ? '#BABABA' : "#8FC549"} ;
+        color: ${(props) => !props.percent ? '#BABABA' : "#8FC549"} ;
     }
 `;
