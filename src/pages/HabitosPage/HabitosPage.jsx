@@ -87,6 +87,9 @@ const PageContainer = styled.div`
   gap: 0.75em;
   background-color: #ffffff;
   border-radius: 10px;
+  position: relative;
+  height: auto;
+  padding-bottom: 2rem;
 `;
 
 const ConteudoContainer = styled.div`
@@ -96,8 +99,9 @@ const ConteudoContainer = styled.div`
   padding-top: 6rem;
   padding-left: 1rem;
   padding-right: 1rem;
+  margin-bottom: 5rem;
   width: 100%;
-  height: 100vh;
+  height: auto;
   p {
     word-break: break-all;
     font-size: 17.976px;

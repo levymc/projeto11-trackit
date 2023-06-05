@@ -9,10 +9,12 @@ import Letters from "./Letters";
 
 export default function NewHabit(props){
 
+
+    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+
     const {dataUser, setDataUser } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token)
     const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
-    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [indexes, setIndexes] = useState([]); 
     
     const loadIcon = (
@@ -39,7 +41,7 @@ export default function NewHabit(props){
         props.setLoading(true)
         const data = {
             name: props.newHabit,
-            days: props.indexes
+            days: indexes
         }
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", data, {
             headers: {
@@ -57,18 +59,18 @@ export default function NewHabit(props){
             })
         })
         props.setNewHabit("")
-        // setZerarSelect(true)
+        setDaySelected(days.map((day, i) => false))
     }
     
 
     return (
         <ContainerNewHabit data-test="habit-create-container">
-            <Input dataTest="habit-name-input" disabled={loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
+            <Input dataTest="habit-name-input" disabled={props.loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
             <ContainerLetters>
                 {days.map((day, i) => 
                     <Letter 
                         data-test="habit-day"
-                        disabled={loading}
+                        disabled={props.loading}
                         key={i} 
                         selected = {daySelected[i]}
                         onClick={() =>{
@@ -87,6 +89,24 @@ export default function NewHabit(props){
     )
 }
 
+const ContainerLetters = styled.div`
+    width: 100%;
+    align-items:start;
+    display: flex;
+    gap: 0.25rem;
+`
+
+const Letter = styled.div`
+    cursor: pointer;
+    padding: 0.4rem;   
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    border-radius: 5px;
+    border: 1px solid #D5D5D5;
+    color: ${(props) => !props.selected ? "#DBDBDB" : "white"};
+    background-color: ${(props) => !props.selected ? "white" : "#CFCFCF"};
+`
 const ContainerNewHabit = styled.div`
     width: 100%;
     border-radius: 5px;

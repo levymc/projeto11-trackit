@@ -15,7 +15,7 @@ export default function Footer(){
 }
 
 const ContainerFooter = styled.div`
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width:100%;
     /* background-color: pink; */
