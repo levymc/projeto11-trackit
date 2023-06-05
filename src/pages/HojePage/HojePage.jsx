@@ -37,15 +37,10 @@ export default function HomePage(props){
           setDataCards(response.data);
           console.log(response.data)
         } catch (error) {
-          console.error('Erro ao buscar os filmes:', error);
-          Swal.fire({
-            icon: "error",
-            title: "Algum erro ocorreu!",
-            confirmButtonColor: "#52B6FF",
-          })
+          console.error('Erro ao buscar os Cards de Hoje:', error);
+          alert("Algum erro ocorreu!");
         }
         setIsSelected(dataCards.map((card, i) => card.done ? true : false))
-
       };
     
       React.useEffect(() => {

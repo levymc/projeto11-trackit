@@ -45,10 +45,11 @@ export default function SeatsPage(props) {
             })
             .catch(error => {
                 setLoading(false);
-                Swal.fire({
-                    title: error.response.data.message,
-                    confirmButtonColor: "#52B6FF",
-                })
+                alert(error.response.data.message)
+                // Swal.fire({
+                //     title: error.response.data.message,
+                //     confirmButtonColor: "#52B6FF",
+                // })
             });
     }
         

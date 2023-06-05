@@ -55,11 +55,11 @@ export default function HomePage(props){
             })
             .catch(error => {
                 setLoading(false);
-                alert("Ocorreu algum erro ao fazer o login!")
-                Swal.fire({
-                    title: error.response.data.message,
-                    confirmButtonColor: "#52B6FF",
-                })
+                alert(error.response.data.message)
+                // Swal.fire({
+                //     title: error.response.data.message,
+                //     confirmButtonColor: "#52B6FF",
+                // })
             });
     }
         
