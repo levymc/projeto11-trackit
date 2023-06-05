@@ -51,7 +51,6 @@ export default function NewHabit(props){
                 Authorization: `Bearer ${token}`
                 }
             }).then(response => {
-                console.log(response.data)
                 props.setIsNewHabit(false)
                 props.setLoading(false)
                 props.getHabits();

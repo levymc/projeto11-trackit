@@ -10,12 +10,11 @@ export default function Footer(){
     const navigateTo = useNavigate();
     const {dataUser, setDataUser, percentage, setPercentage } = useContext(UserContext);
 
-    console.log(percentage)
-
     return (
         <ContainerFooter data-test="menu">
             <SCH2 data-test="habit-link" onClick={() => {navigateTo("/habitos")}}>Hábitos</SCH2>
             {/* <HomeBtn data-test="today-link" onClick={() => {navigateTo("/hoje")}}> */}
+            <Link to="/hoje">
                 <SCPorcentage
                     data-test="today-link"
                     value={percentage} 
@@ -28,6 +27,7 @@ export default function Footer(){
                         pathColor: "#FFFFFF",
                         trailColor: "transparent"
                 })}/>
+            </Link>
             {/* </HomeBtn> */}
             <SCH2 data-test="history-link" onClick={() => {navigateTo("/historico")}}>Histórico</SCH2>
         </ContainerFooter>
@@ -35,9 +35,8 @@ export default function Footer(){
 }
 
 const SCPorcentage = styled(CircularProgressbar)`
-    width: 91px;
-    height: 91px;
-    font-weight: 400;
+    width: 100px;
+    height: 100px;
     font-size: 17.976px;
     line-height: 22px;
     text-align: center;
@@ -50,30 +49,20 @@ const ContainerFooter = styled.div`
     width:100%;
     background-color: white;
     padding-bottom: 2em;
+    padding-left: 2rem; padding-right: 2rem;
     height: 5.5rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    a{
+        text-decoration:none;
+    }
 `
-const HomeBtn = styled.div`
-    cursor: pointer;
-    background-image: url(${btnhome});
-    background-size: cover;
-    background-position: center;
-    width: 100px; /* Ajuste o tamanho conforme necessário */
-    height: 100px; /* Ajuste o tamanho conforme necessário */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color:white;
-    font-size: 17.976px;
-    line-height: 22px;
-`;
 
 const SCH2 = styled.h2`
     cursor: pointer;
     font-size: 17.976px;
     line-height: 22px;
     color: #52B6FF;
-    margin-top: 1rem;
+    margin-top: 2rem;
 `
