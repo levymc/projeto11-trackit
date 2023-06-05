@@ -60,7 +60,7 @@ export default function HabitosPage() {
       <SCDivHabit data-test="habit-container" key={i}>
         <h1 data-test="habit-name">{habit.name}</h1>
         <SecTrash>
-          <BsTrash onClick={async () => {
+          <BsTrash data-test="habit-delete-btn" onClick={async () => {
             try {
               await deleteHabit(habit.id);
               console.log('Item deletado com sucesso!');

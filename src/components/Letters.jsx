@@ -12,6 +12,7 @@ export default function Letters(props){
         <ContainerLetters>
             {days.map((day, i) => 
                 <Letter 
+                    data-test="habit-day"
                     key={i} 
                     selected={props.daysSelected.includes(i)}
                 >
