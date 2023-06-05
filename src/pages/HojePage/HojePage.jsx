@@ -13,47 +13,39 @@ import NavContainer from "../../components/NavContainer";
 
 
 export default function HomePage(props){
+
     const {dataUser, setDataUser } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token)
-
-    const navigateTo = useNavigate();
-    const [loading, setLoading] = useState(false);
     const [percent, setPercent] = useState(0);
     const [isSelected, setIsSelected] = useState([])
-
     const [dataCards, setDataCards] = useState([]);
 
     dayjs.locale('pt-br');
-    const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase());
+    const dataFormatada = dayjs().format('dddd, DD/MM').replace(/^\w/, (c) => c.toLocaleUpperCase()).replace("-feira", "");
     const [dataAtual, setDataAtual] = useState(dataFormatada);
 
     const getCards = async () => {
         try {
-          const response = await axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          setDataCards(response.data);
-          console.log(response.data)
+            const response = await axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', {
+                headers: {
+                Authorization: `Bearer ${token}`
+                }
+            });
+            setDataCards(response.data);
+            console.log(response.data)
+            setIsSelected(dataCards.map((card, i) => card.done ? true : false))
+            const trueCount = isSelected.reduce((count, value) => count + (value ? 1 : 0), 0);
+            const percentage = Math.ceil((trueCount / isSelected.length) * 100);
+            setPercent(percentage)
         } catch (error) {
           console.error('Erro ao buscar os Cards de Hoje:', error);
           alert("Algum erro ocorreu!");
         }
-        setIsSelected(dataCards.map((card, i) => card.done ? true : false))
       };
     
-      React.useEffect(() => {
+    React.useEffect(() => {
         getCards();
-      }, []);
-
-    const loadIcon = (
-        <InfinitySpin 
-            width='200'
-            color="black"
-        />
-    )
-
+    }, []);
 
     return (
         <>

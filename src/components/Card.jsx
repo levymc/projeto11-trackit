@@ -32,16 +32,17 @@ export default function Card(props){
           })
           .catch((error) => {
             console.log(error);
+            alert(error.response.data.message)
           });
       };
       
       
     return(
         <CardContainer>
-            <TextContainer>
+            <TextContainer isSelected={props.isSelected[props.index]} recordAtual={props.recordAtual} >
                 <h1>{props.text}</h1>
-                <h2>Sequência atual: {props.recordAtual}</h2>
-                <h2>Seu Recorde: {props.selfRecord}</h2>
+                <h2>Sequência atual: <font id="atual">{props.recordAtual} dias</font></h2>
+                <h2>Seu Recorde: <font id="record">{props.selfRecord} dias</font></h2>
             </TextContainer>
             <CheckContainer isSelected={props.isSelected[props.index]} onClick={() => {changeSelect(props.index, !props.isSelected[props.index])}}>
                 <AiOutlineCheck />
@@ -75,6 +76,9 @@ const TextContainer = styled.div`
         font-size: 12.976px;
         line-height: 16px;
         color: #666666;
+    }
+    #atual{
+        color: ${(props) => (props.isSelected && props.recordAtual >= 0) ? "#8FC549" : "#666666"}
     }
 `
 
