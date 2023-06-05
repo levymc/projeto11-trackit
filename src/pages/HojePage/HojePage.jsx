@@ -71,6 +71,7 @@ export default function HomePage(props){
                 </Topo>
                 {dataCards.map((data, i) => 
                     <Card 
+                        id = {data.id}
                         setPercent = {setPercent}
                         key = {i}
                         text = {data.name}

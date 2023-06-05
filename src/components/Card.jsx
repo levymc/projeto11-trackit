@@ -1,21 +1,40 @@
 import styled from "styled-components";
 import { AiOutlineCheck } from "react-icons/ai";
 import React, { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import UserContext from "./UserContext";
 
 
 export default function Card(props){
-
+    const {dataUser, setDataUser } = useContext(UserContext);
+    const [token, setToken] = useState(dataUser.token)
 
 
     const changeSelect = (index, newValue) => {
-        const newArray = [...props.isSelected];
-        newArray[index] = newValue;
-        props.setIsSelected(newArray);
+        axios
+          .post(
+            `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${props.id}/check`,
+            {},
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
+          .then((response) => {
+            console.log(response.data);
+            const newArray = [...props.isSelected];
+            newArray[index] = newValue;
+            props.setIsSelected(newArray);
+            const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
+            const percentage = Math.ceil((trueCount / newArray.length) * 100);
+            props.setPercent(percentage);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
       
-        const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
-        const percentage = Math.ceil((trueCount / newArray.length) * 100);
-        props.setPercent(percentage);
-    };
       
     return(
         <CardContainer>
