@@ -65,8 +65,8 @@ export default function HomePage(props) {
         <NavContainer />
         <ContainerHoje>
           <Topo percent={percent}>
-            <h1>{dataAtual}</h1>
-            <h2>
+            <h1 data-test="today">{dataAtual}</h1>
+            <h2 data-test="today-counter">
               {percent === 0
                 ? "Nenhum hábito concluído ainda"
                 : percent + "% dos hábitos concluídos"}

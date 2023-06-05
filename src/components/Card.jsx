@@ -38,13 +38,13 @@ export default function Card(props){
       
       
     return(
-        <CardContainer>
+        <CardContainer data-test="today-habit-container">
             <TextContainer isSelected={props.isSelected[props.index]} recordAtual={props.recordAtual} >
-                <h1>{props.text}</h1>
-                <h2>Sequência atual: <font id="atual">{props.recordAtual} dias</font></h2>
-                <h2>Seu Recorde: <font id="record">{props.selfRecord} dias</font></h2>
+                <h1 data-test="today-habit-name">{props.text}</h1>
+                <h2 data-test="today-habit-sequence">Sequência atual: <font id="atual">{props.recordAtual} dias</font></h2>
+                <h2 data-test="today-habit-record">Seu Recorde: <font id="record">{props.selfRecord} dias</font></h2>
             </TextContainer>
-            <CheckContainer isSelected={props.isSelected[props.index]} onClick={() => {changeSelect(props.index, !props.isSelected[props.index])}}>
+            <CheckContainer data-test="today-habit-check-btn" isSelected={props.isSelected[props.index]} onClick={() => {changeSelect(props.index, !props.isSelected[props.index])}}>
                 <AiOutlineCheck />
             </CheckContainer>
         </CardContainer>
