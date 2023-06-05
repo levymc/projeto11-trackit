@@ -67,7 +67,7 @@ export default function HomePage(props){
                 
                 <Topo percent={percent}>
                     <h1>{dataAtual}</h1>
-                    <h2>{percent === 0 ? "Nenhum hábito concluído ainda" : percent}</h2>
+                    <h2>{percent === 0 ? "Nenhum hábito concluído ainda" : percent+"% dos hábitos concluídos"}</h2>
                 </Topo>
                 {dataCards.map((data, i) => 
                     <Card 

@@ -13,9 +13,9 @@ export default function Card(props){
         props.setIsSelected(newArray);
       
         const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
-        const percentage = (trueCount / newArray.length) * 100;
+        const percentage = Math.ceil((trueCount / newArray.length) * 100);
         props.setPercent(percentage);
-      };
+    };
       
     return(
         <CardContainer>
