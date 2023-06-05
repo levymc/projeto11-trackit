@@ -6,6 +6,7 @@ import CadastroPage from './pages/CadastroPage/CadastroPage'
 import HomePage from "./pages/HomePage/HomePage";
 import HojePage from "./pages/HojePage/HojePage";
 import HabitosPage from "./pages/HabitosPage/HabitosPage";
+import HistoricPage from "./pages/HistoricPage/HistoricPage";
 import 'materialize-css/dist/css/materialize.min.css';
 import ResetStyle from "./style/ResetStyle";
 import Swal from 'sweetalert2';
@@ -43,7 +44,7 @@ export default function App() {
                       }>
                       </Route>
                       <Route path="/historico" element={
-                          <HojePage
+                          <HistoricPage
                           />
                       }>
                       </Route>
