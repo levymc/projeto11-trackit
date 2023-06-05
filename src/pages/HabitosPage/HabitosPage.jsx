@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../components/UserContext";
+import Letters from "../../components/Letters";
 
 export default function HabitosPage() {
   const [isNewHabit, setIsNewHabit] = useState(false);
@@ -15,6 +16,7 @@ export default function HabitosPage() {
   const {dataUser, setDataUser } = useContext(UserContext);
   const [token, setToken] = useState(dataUser.token)
   const [newHabit, setNewHabit] = useState("")
+  const [loading, setLoading] = useState(false);
 
   console.log(dataUser.image)
 
@@ -41,6 +43,14 @@ export default function HabitosPage() {
     }, []);
 
   console.log(habits)
+
+  const divHabit = habits.map((habit, i) => 
+    <SCDivHabit>
+      {habit.name}
+      <Letters loading={loading} />
+    </SCDivHabit>
+  )
+
   return (
     <PageContainer>
       <NavContainer />
@@ -48,14 +58,25 @@ export default function HabitosPage() {
       <ConteudoContainer>
         <Cabecalho setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} />
         <NewHabitContainer data-test="habit-create-container" isNewHabit={isNewHabit}>
-          {isNewHabit && <NewHabit setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
+          {isNewHabit && <NewHabit setLoading={setLoading} loading={loading} setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
         </NewHabitContainer>
-        {habits.length===0 && <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> }
+        {habits.length===0 ? <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> : divHabit}
       </ConteudoContainer>
       <Footer />
     </PageContainer>
   );
 }
+
+const SCDivHabit = styled.div`
+  width: 100%;
+  border-radius: 5px;
+  background-color: #ffffff;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  padding-bottom: 1.5rem;
+  padding: 1rem;
+`
 
 const PageContainer = styled.div`
   width: 100%;

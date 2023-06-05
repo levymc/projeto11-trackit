@@ -5,25 +5,26 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import UserContext from "./UserContext";
 import { InfinitySpin } from "react-loader-spinner";
+import Letters from "./Letters";
 
 export default function NewHabit(props){
 
-    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
-    const [loading, setLoading] = useState(false);
-
-    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
-    const [indexes, setIndexes] = useState([]); 
-
     const {dataUser, setDataUser } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token)
-
-
+    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
+    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+    const [indexes, setIndexes] = useState([]); 
+    
     const loadIcon = (
         <InfinitySpin 
             width='20'
             color="black"
         />
       )
+    
+    const cancelarBtn = () => {
+        props.setIsNewHabit(false)
+    }
 
     const changeSelect = (index, newValue) => {
         const newArray = [...daySelected];
@@ -34,19 +35,11 @@ export default function NewHabit(props){
         setIndexes(newIndexes);
     };
 
-    
-    console.log(indexes)
-    
-    const cancelarBtn = () => {
-        props.setIsNewHabit(false)
-    }
-
-
     const enviarNewHabit = () => {
-        setLoading(true)
+        props.setLoading(true)
         const data = {
             name: props.newHabit,
-            days: indexes
+            days: props.indexes
         }
         axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", data, {
             headers: {
@@ -54,7 +47,7 @@ export default function NewHabit(props){
             }
           }).then(response => {
             console.log(response.data)
-            setLoading(false)
+            props.setLoading(false)
         }).catch(error => {
             console.error('Erro:', error);
             Swal.fire({
@@ -64,11 +57,10 @@ export default function NewHabit(props){
             })
         })
         props.setNewHabit("")
-        setDaySelected(days.map((day, i) => false))
+        // setZerarSelect(true)
     }
     
 
-    console.log(props.onChange, props.newHabit)
     return (
         <ContainerNewHabit data-test="habit-create-container">
             <Input dataTest="habit-name-input" disabled={loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
@@ -89,7 +81,7 @@ export default function NewHabit(props){
             </ContainerLetters>
             <ContainerBtns>
                 <button data-test="habit-create-cancel-btn" id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
-                <button data-test="habit-create-save-btn" id="salvarBtn" onClick={enviarNewHabit}>{!loading ? "Salvar" : loadIcon}</button>
+                <button data-test="habit-create-save-btn" id="salvarBtn" onClick={enviarNewHabit}>{!props.loading ? "Salvar" : loadIcon}</button>
             </ContainerBtns>
         </ContainerNewHabit>
     )
@@ -104,25 +96,6 @@ const ContainerNewHabit = styled.div`
     flex-direction: column;
     padding-bottom: 1.5rem;
     padding: 1rem;
-`
-
-const ContainerLetters = styled.div`
-    width: 100%;
-    align-items:start;
-    display: flex;
-    gap: 0.25rem;
-`
-
-const Letter = styled.div`
-    cursor: pointer;
-    padding: 0.4rem;   
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    border-radius: 5px;
-    border: 1px solid #D5D5D5;
-    color: ${(props) => !props.selected ? "#DBDBDB" : "white"};
-    background-color: ${(props) => !props.selected ? "white" : "#CFCFCF"};
 `
 
 const ContainerBtns = styled.div`
