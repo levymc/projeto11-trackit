@@ -77,9 +77,9 @@ export default function HabitosPage() {
 
       <ConteudoContainer>
         <Cabecalho setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} />
-        <NewHabitContainer data-test="habit-create-container" isNewHabit={isNewHabit}>
-          {isNewHabit && <NewHabit getHabits={getHabits} setLoading={setLoading} loading={loading} setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
-        </NewHabitContainer>
+        {isNewHabit &&  <NewHabitContainer data-test="habit-create-container" isNewHabit={isNewHabit}>
+            {isNewHabit && <NewHabit getHabits={getHabits} setLoading={setLoading} loading={loading} setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
+          </NewHabitContainer>}
         {habits.length===0 ? <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> : divHabit}
       </ConteudoContainer>
       <Footer />
