@@ -116,6 +116,6 @@ const Topo = styled.div`
     h2{
         font-size: 17.976px;
         line-height: 22px;
-        color: #BABABA;
+        color: ${(props) => props.percent === 0 ? '#BABABA' : "#8FC549"} ;
     }
 `;
