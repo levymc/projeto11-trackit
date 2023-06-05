@@ -85,8 +85,8 @@ export default function NewHabit(props){
                 )}
             </ContainerLetters>
             <ContainerBtns>
-                <button data-test="habit-create-cancel-btn" id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
-                <button data-test="habit-create-save-btn" id="salvarBtn" onClick={enviarNewHabit}>{!props.loading ? "Salvar" : loadIcon}</button>
+                <button disabled={props.loading} data-test="habit-create-cancel-btn" id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
+                <button disabled={props.loading} data-test="habit-create-save-btn" id="salvarBtn" onClick={enviarNewHabit}>{!props.loading ? "Salvar" : loadIcon}</button>
             </ContainerBtns>
         </ContainerNewHabit>
     )
