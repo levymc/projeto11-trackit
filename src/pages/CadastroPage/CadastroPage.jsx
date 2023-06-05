@@ -99,6 +99,7 @@ export default function SeatsPage(props) {
                             onChange={(e) => campo.setVar(e.target.value)} 
                             key={i} 
                             placeholder={campo.name} 
+                            dataTest={campo.dataTest}
                         />
                     )
                 })}
