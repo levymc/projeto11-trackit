@@ -19,8 +19,6 @@ export default function HabitosPage() {
   const [newHabit, setNewHabit] = useState("")
   const [loading, setLoading] = useState(false);
 
-  console.log(dataUser.image)
-
   const getHabits = async () => {
       try {
         const response = await axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', {
@@ -43,15 +41,37 @@ export default function HabitosPage() {
       getHabits();
     }, []);
 
-  console.log(habits)
-
-  const divHabit = habits.map((habit, i) => 
-    <SCDivHabit key={i}>
-      {habit.name}
-        <SecTrash><BsTrash /></SecTrash>
-      <Letters key={i} id={habit.id} daysSelected={habit.days} loading={loading} />
-    </SCDivHabit>
-  )
+    const deleteHabit = async (id) => {
+      try {
+        const response = await axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        getHabits();
+        return response.data;
+      } catch (error) {
+        console.error('Erro ao deletar o item:', error);
+        throw error;
+      }
+    }
+    
+    const divHabit = habits.map((habit, i) => (
+      <SCDivHabit key={i}>
+        {habit.name}
+        <SecTrash>
+          <BsTrash onClick={async () => {
+            try {
+              await deleteHabit(habit.id);
+              console.log('Item deletado com sucesso!');
+            } catch (error) {
+              console.error('Erro ao deletar o item:', error);
+            }
+          }} />
+        </SecTrash>
+        <Letters key={i} id={habit.id} daysSelected={habit.days} loading={loading} />
+      </SCDivHabit>
+    ));
 
   return (
     <PageContainer>
