@@ -8,12 +8,15 @@ export default function Card(props){
 
 
     const changeSelect = (index, newValue) => {
-          const newArray = [...props.isSelected];
-          newArray[index] = newValue;
-          props.setIsSelected(newArray);
-    };
-    // Receber do servidor(useEffect) as Cards
-
+        const newArray = [...props.isSelected];
+        newArray[index] = newValue;
+        props.setIsSelected(newArray);
+      
+        const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
+        const percentage = (trueCount / newArray.length) * 100;
+        props.setPercent(percentage);
+      };
+      
     return(
         <CardContainer>
             <TextContainer>

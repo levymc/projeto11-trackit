@@ -19,6 +19,7 @@ export default function HomePage(props){
     const navigateTo = useNavigate();
     const [loading, setLoading] = useState(false);
     const [percent, setPercent] = useState(0);
+    const [isSelected, setIsSelected] = useState([])
 
     const [dataCards, setDataCards] = useState([]);
 
@@ -43,15 +44,13 @@ export default function HomePage(props){
             confirmButtonColor: "#52B6FF",
           })
         }
+        setIsSelected(dataCards.map((card, i) => false))
+
       };
     
       React.useEffect(() => {
         getCards();
       }, []);
-
-    
-
-    const [isSelected, setIsSelected] = useState(dataCards.map((card, i) => false))
 
     const loadIcon = (
         <InfinitySpin 
@@ -66,12 +65,13 @@ export default function HomePage(props){
             <NavContainer />
             <ContainerHoje>
                 
-                <Topo>
+                <Topo percent={percent}>
                     <h1>{dataAtual}</h1>
-                    <h2>{percent === 0 && "Nenhum hábito concluído ainda"}</h2>
+                    <h2>{percent === 0 ? "Nenhum hábito concluído ainda" : percent}</h2>
                 </Topo>
                 {dataCards.map((data, i) => 
                     <Card 
+                        setPercent = {setPercent}
                         key = {i}
                         text = {data.name}
                         recordAtual = {data.currentSequence}
