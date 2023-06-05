@@ -16,6 +16,10 @@ export default function Letters(props){
         setIndexes(newIndexes);
     };
 
+    // if(props.zerarSelect){
+    //     setDaySelected(days.map((day, i) => false))
+    // }
+
     return (
         <ContainerLetters>
             {days.map((day, i) => 

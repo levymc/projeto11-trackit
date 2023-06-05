@@ -11,7 +11,10 @@ export default function NewHabit(props){
 
     const {dataUser, setDataUser } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token)
-
+    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
+    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+    const [indexes, setIndexes] = useState([]); 
+    
     const loadIcon = (
         <InfinitySpin 
             width='20'
@@ -22,6 +25,15 @@ export default function NewHabit(props){
     const cancelarBtn = () => {
         props.setIsNewHabit(false)
     }
+
+    const changeSelect = (index, newValue) => {
+        const newArray = [...daySelected];
+        const newIndexes = [...indexes];
+        newArray[index] = newValue;
+        newIndexes.push(index);
+        setDaySelected(newArray);
+        setIndexes(newIndexes);
+    };
 
     const enviarNewHabit = () => {
         props.setLoading(true)
@@ -45,11 +57,10 @@ export default function NewHabit(props){
             })
         })
         props.setNewHabit("")
-        props.setDaySelected(days.map((day, i) => false))
+        // setZerarSelect(true)
     }
     
 
-    console.log(props.onChange, props.newHabit)
     return (
         <ContainerNewHabit>
             <Input disables={props.loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>

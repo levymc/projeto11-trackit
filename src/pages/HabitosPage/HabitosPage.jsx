@@ -18,6 +18,9 @@ export default function HabitosPage() {
   const [newHabit, setNewHabit] = useState("")
   const [loading, setLoading] = useState(false);
 
+  const [indexes, setIndexes] = useState([]); 
+
+
   const getHabits = async () => {
       try {
         const response = await axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits', {
@@ -56,7 +59,7 @@ export default function HabitosPage() {
       <ConteudoContainer>
         <Cabecalho setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} />
         <NewHabitContainer isNewHabit={isNewHabit}>
-          {isNewHabit && <NewHabit setLoading={setLoading} loading={loading} setIndexes={setIndexes} indexes={indexes} days={days} daySelected={daySelected} setDaySelected={setDaySelected} changeSelect={changeSelect} setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
+          {isNewHabit && <NewHabit setLoading={setLoading} loading={loading} setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
         </NewHabitContainer>
         {habits.length===0 ? <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> : divHabit}
       </ConteudoContainer>
