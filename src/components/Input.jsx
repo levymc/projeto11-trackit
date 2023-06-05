@@ -1,7 +1,6 @@
 import styled from "styled-components"
 
 export default function Input(props){
-    console.log(props)
     return(
         <>
             <SCInput 

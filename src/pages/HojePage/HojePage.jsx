@@ -44,7 +44,7 @@ export default function HomePage(props){
             confirmButtonColor: "#52B6FF",
           })
         }
-        setIsSelected(dataCards.map((card, i) => false))
+        setIsSelected(dataCards.map((card, i) => card.done ? true : false))
 
       };
     
