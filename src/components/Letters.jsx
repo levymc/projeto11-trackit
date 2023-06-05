@@ -1,15 +1,30 @@
+import styled, { keyframes, css } from "styled-components";
+import React, { useState, useEffect, useContext } from "react";
 
 export default function Letters(props){
 
+    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+    const [indexes, setIndexes] = useState([]); 
+    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
+
+    const changeSelect = (index, newValue) => {
+        const newArray = [...daySelected];
+        const newIndexes = [...indexes];
+        newArray[index] = newValue;
+        newIndexes.push(index);
+        setDaySelected(newArray);
+        setIndexes(newIndexes);
+    };
+
     return (
         <ContainerLetters>
-            {props.days.map((day, i) => 
+            {days.map((day, i) => 
                 <Letter 
                     disabled={props.loading}
                     key={i} 
-                    selected = {props.daySelected[i]}
+                    selected = {daySelected[i]}
                     onClick={() =>{
-                        props.changeSelect(i, !props.daySelected[i])
+                        changeSelect(i, !daySelected[i])
                     }}
                 >
                     {day}

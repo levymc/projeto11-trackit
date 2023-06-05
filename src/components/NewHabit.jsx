@@ -53,21 +53,7 @@ export default function NewHabit(props){
     return (
         <ContainerNewHabit>
             <Input disables={props.loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
-            <Letters days={props.days} loading={props.loading} daySelected={props.daySelected} />
-            {/* <ContainerLetters>
-                {props.days.map((day, i) => 
-                    <Letter 
-                        disabled={props.loading}
-                        key={i} 
-                        selected = {props.daySelected[i]}
-                        onClick={() =>{
-                            props.changeSelect(i, !props.daySelected[i])
-                        }}
-                    >
-                        {day}
-                    </Letter>
-                )}
-            </ContainerLetters> */}
+            <Letters loading={props.loading} />
             <ContainerBtns>
                 <button id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
                 <button id="salvarBtn" onClick={enviarNewHabit}>{!props.loading ? "Salvar" : loadIcon}</button>
@@ -85,25 +71,6 @@ const ContainerNewHabit = styled.div`
     flex-direction: column;
     padding-bottom: 1.5rem;
     padding: 1rem;
-`
-
-const ContainerLetters = styled.div`
-    width: 100%;
-    align-items:start;
-    display: flex;
-    gap: 0.25rem;
-`
-
-const Letter = styled.div`
-    cursor: pointer;
-    padding: 0.4rem;   
-    display: flex;
-    justify-content: center;
-    align-items: start;
-    border-radius: 5px;
-    border: 1px solid #D5D5D5;
-    color: ${(props) => !props.selected ? "#DBDBDB" : "white"};
-    background-color: ${(props) => !props.selected ? "white" : "#CFCFCF"};
 `
 
 const ContainerBtns = styled.div`
