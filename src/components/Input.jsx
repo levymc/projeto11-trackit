@@ -9,6 +9,7 @@ export default function Input(props){
                 onChange={props.onChange} 
                 placeholder={props.placeholder}
                 value={props.newHabit}
+                data-test={props.dataTest}
             >
 
             </SCInput>

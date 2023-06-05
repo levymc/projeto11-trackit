@@ -31,11 +31,13 @@ export default function HomePage(props){
             name: "email",
             var: email,
             setVar: setEmail,
+            dataTest: "email-input"
         },
         {
             name: "senha",
             var: password,
             setVar: setPassword,
+            dataTest: "password-input"
         },
     ];
 
@@ -79,15 +81,18 @@ export default function HomePage(props){
                             key={i} 
                             type={i === 0 ? 'email' : 'password'} 
                             placeholder={campo.name} 
-                            onChange={(e) => campo.setVar(e.target.value)} />
+                            onChange={(e) => campo.setVar(e.target.value)} 
+                            dataTest = {campo.dataTest}
+                            />
                         )
                     })}
                     <LargeBtn 
-                        nome= {loading ? loadIcon : "Entrar"}
-                        disabled={loading}
+                        nome = {loading ? loadIcon : "Entrar"}
+                        disabled = {loading}
+                        dataTest = "login-btn"
                     >
                     </LargeBtn>
-                    <Link to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
+                    <Link data-test="signup-link" to="/cadastro" className="link">Não tem uma conta? Cadastre-se!</Link>
                 </ContainerInputs>
             </ContainerHome>
         </>
