@@ -14,7 +14,7 @@ export default function Footer(){
         <ContainerFooter data-test="menu">
             <SCH2 data-test="habit-link" onClick={() => {navigateTo("/habitos")}}>Hábitos</SCH2>
             {/* <HomeBtn data-test="today-link" onClick={() => {navigateTo("/hoje")}}> */}
-            <Link to="/hoje">
+            <Link data-test="today-link" to="/hoje">
                 <SCPorcentage
                     data-test="today-link"
                     value={percentage} 
