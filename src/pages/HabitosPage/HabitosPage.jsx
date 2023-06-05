@@ -57,8 +57,8 @@ export default function HabitosPage() {
     }
     
     const divHabit = habits.map((habit, i) => (
-      <SCDivHabit key={i}>
-        {habit.name}
+      <SCDivHabit data-test="habit-container" key={i}>
+        <h1 data-test="habit-name">{habit.name}</h1>
         <SecTrash>
           <BsTrash onClick={async () => {
             try {
