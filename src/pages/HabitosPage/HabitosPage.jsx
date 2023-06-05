@@ -43,17 +43,19 @@ export default function HabitosPage() {
     }, []);
 
     const deleteHabit = async (id) => {
-      try {
-        const response = await axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        });
-        getHabits();
-        return response.data;
-      } catch (error) {
-        console.error('Erro ao deletar o item:', error);
-        throw error;
+      if(confirm("Deseja remover o hábito?")){
+        try {
+          const response = await axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          getHabits();
+          return response.data;
+        } catch (error) {
+          console.error('Erro ao deletar o item:', error);
+          throw error;
+        }
       }
     }
     
@@ -62,12 +64,7 @@ export default function HabitosPage() {
         <h1 data-test="habit-name">{habit.name}</h1>
         <SecTrash>
           <BsTrash data-test="habit-delete-btn" onClick={async () => {
-            try {
               await deleteHabit(habit.id);
-              console.log('Item deletado com sucesso!');
-            } catch (error) {
-              console.error('Erro ao deletar o item:', error);
-            }
           }} />
         </SecTrash>
         <Letters key={i} id={habit.id} daysSelected={habit.days} loading={loading} />
