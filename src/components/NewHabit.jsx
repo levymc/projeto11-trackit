@@ -50,6 +50,8 @@ export default function NewHabit(props){
           }).then(response => {
             console.log(response.data)
             props.setLoading(false)
+            props.getHabits();
+            setIndexes([]);
         }).catch(error => {
             console.error('Erro:', error);
             Swal.fire({

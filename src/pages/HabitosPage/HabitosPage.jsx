@@ -80,7 +80,7 @@ export default function HabitosPage() {
       <ConteudoContainer>
         <Cabecalho setIsNewHabit={setIsNewHabit} isNewHabit={isNewHabit} />
         <NewHabitContainer data-test="habit-create-container" isNewHabit={isNewHabit}>
-          {isNewHabit && <NewHabit setLoading={setLoading} loading={loading} setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
+          {isNewHabit && <NewHabit getHabits={getHabits} setLoading={setLoading} loading={loading} setIsNewHabit={setIsNewHabit} setNewHabit={setNewHabit} onChange={(e) => setNewHabit(e.target.value)} newHabit={newHabit} />}
         </NewHabitContainer>
         {habits.length===0 ? <p>Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para começar a trackear!</p> : divHabit}
       </ConteudoContainer>
@@ -115,7 +115,7 @@ const PageContainer = styled.div`
   justify-content: center;
   gap: 0.75em;
   background-color: #E5E5E5;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   position: relative;
 `;
 
@@ -126,7 +126,7 @@ const ConteudoContainer = styled.div`
   padding-top: 6rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
   background-color: #E5E5E5;
   width: 100%;
   p {

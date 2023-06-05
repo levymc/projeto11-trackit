@@ -16,11 +16,12 @@ export default function Footer(){
 
 const ContainerFooter = styled.div`
     position: fixed;
+    left: 0;
     bottom: 0;
     width:100%;
-    /* background-color: pink; */
-    padding-bottom: 1.5em;
-    height: 6rem;
+    background-color: white;
+    padding-bottom: 2em;
+    height: 5.5rem;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
