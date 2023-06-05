@@ -73,28 +73,30 @@ export default function NewHabit(props){
     
 
     return (
-        <ContainerNewHabit data-test="habit-create-container">
-            <Input dataTest="habit-name-input" disabled={props.loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
-            <ContainerLetters>
-                {days.map((day, i) => 
-                    <Letter 
-                        data-test="habit-day"
-                        disabled={props.loading}
-                        key={i} 
-                        selected = {daySelected[i]}
-                        onClick={() =>{
-                            changeSelect(i, !daySelected[i])
-                        }}
-                    >
-                        {day}
-                    </Letter>
-                )}
-            </ContainerLetters>
-            <ContainerBtns>
-                <button disabled={props.loading} data-test="habit-create-cancel-btn" id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
-                <button disabled={props.loading} data-test="habit-create-save-btn" id="salvarBtn" onClick={enviarNewHabit}>{!props.loading ? "Salvar" : loadIcon}</button>
-            </ContainerBtns>
-        </ContainerNewHabit>
+        <>
+            {props.isNewHabit && <ContainerNewHabit data-test="habit-create-container">
+                <Input dataTest="habit-name-input" disabled={props.loading} onChange={props.onChange} newHabit={props.newHabit} setIsNewHabit={props.setIsNewHabit} placeholder="nome do hábito"/>
+                <ContainerLetters>
+                    {days.map((day, i) => 
+                        <Letter 
+                            data-test="habit-day"
+                            disabled={props.loading}
+                            key={i} 
+                            selected = {daySelected[i]}
+                            onClick={() =>{
+                                changeSelect(i, !daySelected[i])
+                            }}
+                        >
+                            {day}
+                        </Letter>
+                    )}
+                </ContainerLetters>
+                <ContainerBtns>
+                    <button disabled={props.loading} data-test="habit-create-cancel-btn" id="cancelarBtn" onClick={cancelarBtn} >Cancelar</button>
+                    <button disabled={props.loading} data-test="habit-create-save-btn" id="salvarBtn" onClick={enviarNewHabit}>{!props.loading ? "Salvar" : loadIcon}</button>
+                </ContainerBtns>
+            </ContainerNewHabit>}
+        </>
     )
 }
 
