@@ -6,9 +6,7 @@ export default function Letters(props){
     const days = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [indexes, setIndexes] = useState([]); 
 
-    // if(props.zerarSelect){
-    //     setDaySelected(days.map((day, i) => false))
-    // }
+    
 
     return (
         <ContainerLetters>

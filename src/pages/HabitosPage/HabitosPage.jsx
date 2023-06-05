@@ -8,6 +8,7 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import UserContext from "../../components/UserContext";
 import Letters from "../../components/Letters";
+import { BsTrash } from "react-icons/bs";
 
 export default function HabitosPage() {
   const [isNewHabit, setIsNewHabit] = useState(false);
@@ -45,9 +46,10 @@ export default function HabitosPage() {
   console.log(habits)
 
   const divHabit = habits.map((habit, i) => 
-    <SCDivHabit>
+    <SCDivHabit key={i}>
       {habit.name}
-      <Letters daysSelected={habit.days} loading={loading} />
+        <SecTrash><BsTrash /></SecTrash>
+      <Letters key={i} id={habit.id} daysSelected={habit.days} loading={loading} />
     </SCDivHabit>
   )
 
@@ -67,12 +69,19 @@ export default function HabitosPage() {
   );
 }
 
+const SecTrash = styled.section`
+  position: absolute;
+  right: 15px;
+  cursor: pointer;
+`
+
 const SCDivHabit = styled.div`
+  position: relative;
   width: 100%;
   border-radius: 5px;
   background-color: #ffffff;
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   flex-direction: column;
   padding-bottom: 1.5rem;
   padding: 1rem;
