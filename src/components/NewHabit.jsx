@@ -38,31 +38,37 @@ export default function NewHabit(props){
     };
 
     const enviarNewHabit = () => {
-        props.setLoading(true)
-        const data = {
-            name: props.newHabit,
-            days: indexes
-        }
-        axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", data, {
-            headers: {
-              Authorization: `Bearer ${token}`
+        if(props.newHabit == ""){
+            alert("Nenhum nome foi escrito!")
+        }else{
+            props.setLoading(true)
+            const data = {
+                name: props.newHabit,
+                days: indexes
             }
-          }).then(response => {
-            console.log(response.data)
-            props.setIsNewHabit(false)
-            props.setLoading(false)
-            props.getHabits();
-            setIndexes([]);
-        }).catch(error => {
-            console.error('Erro:', error);
-            Swal.fire({
-                icon: "error",
-                title: "Algum erro ocorreu!",
-                confirmButtonColor: "#52B6FF",
+            axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", data, {
+                headers: {
+                Authorization: `Bearer ${token}`
+                }
+            }).then(response => {
+                console.log(response.data)
+                props.setIsNewHabit(false)
+                props.setLoading(false)
+                props.getHabits();
+                setIndexes([]);
+            }).catch(error => {
+                console.error('Erro:', error);
+                alert("Ocorreu algum erro")
+                // Swal.fire({
+                //     icon: "error",
+                //     title: "Algum erro ocorreu!",
+                //     confirmButtonColor: "#52B6FF",
+                // })
             })
-        })
-        props.setNewHabit("")
-        setDaySelected(days.map((day, i) => false))
+            props.setNewHabit("")
+            setDaySelected(days.map((day, i) => false))
+            }
+        
     }
     
 

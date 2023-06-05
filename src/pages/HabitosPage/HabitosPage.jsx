@@ -28,12 +28,13 @@ export default function HabitosPage() {
         });
         setHabits(response.data);
       } catch (error) {
-        console.error('Erro ao buscar os filmes:', error);
-        Swal.fire({
-          icon: "error",
-          title: "Algum erro ocorreu!",
-          confirmButtonColor: "#52B6FF",
-        })
+        console.error('Erro ao buscar os Hábitos:', error);
+        alert("Ocorreu algum erro")
+        // Swal.fire({
+        //   icon: "error",
+        //   title: "Algum erro ocorreu!",
+        //   confirmButtonColor: "#52B6FF",
+        // })
       }
     };
   
