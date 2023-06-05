@@ -36,13 +36,12 @@ export default function Card(props){
           });
       };
       
-      
     return(
         <CardContainer data-test="today-habit-container">
-            <TextContainer isSelected={props.isSelected[props.index]} recordAtual={props.recordAtual} >
+            <TextContainer selfRecord={props.selfRecord} isSelected={props.isSelected[props.index]} recordAtual={props.recordAtual} >
                 <h1 data-test="today-habit-name">{props.text}</h1>
                 <h2 data-test="today-habit-sequence">Sequência atual: <font id="atual">{props.recordAtual} dias</font></h2>
-                <h2 data-test="today-habit-record">Seu Recorde: <font id="record">{props.selfRecord} dias</font></h2>
+                <h2 data-test="today-habit-record">Seu Recorde: <font  id="record">{props.selfRecord} dias</font></h2>
             </TextContainer>
             <CheckContainer data-test="today-habit-check-btn" isSelected={props.isSelected[props.index]} onClick={() => {changeSelect(props.index, !props.isSelected[props.index])}}>
                 <AiOutlineCheck />
@@ -78,7 +77,10 @@ const TextContainer = styled.div`
         color: #666666;
     }
     #atual{
-        color: ${(props) => (props.isSelected && props.recordAtual >= 0) ? "#8FC549" : "#666666"}
+        color: ${(props) => props.isSelected ? "#8FC549" : "#666666"}
+    }
+    #record{
+        color: ${(props) => (props.isSelected && props.selfRecord === props.recordAtual) ? "#8FC549" : "#666666"}
     }
 `
 
