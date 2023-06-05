@@ -19,22 +19,42 @@ export default function Card(props){
               headers: {
                 Authorization: `Bearer ${token}`,
               },
-            }
-          )
-          .then((response) => {
-            console.log(response.data);
+            }).then((response) => {
+                console.log(response);
+                const newArray = [...props.isSelected];
+                newArray[index] = newValue;
+                props.setIsSelected(newArray);
+                const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
+                const percentage = Math.ceil((trueCount / newArray.length) * 100);
+                props.setPercent(percentage);
+            })
+            .catch((error) => {
+                console.log(error);
+                alert(error.response.data.message)
+            });
+    };
+    
+    const uncheckHabit = (index, newValue) => {
+    axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${props.id}/uncheck`,
+        {},
+        {
+            headers: {
+            Authorization: `Bearer ${token}`,
+            },
+        }).then((response) => {
+            console.log(response);
             const newArray = [...props.isSelected];
             newArray[index] = newValue;
             props.setIsSelected(newArray);
             const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
             const percentage = Math.ceil((trueCount / newArray.length) * 100);
             props.setPercent(percentage);
-          })
-          .catch((error) => {
+        })
+        .catch((error) => {
             console.log(error);
-            alert(error.response.data.message)
-          });
-      };
+            alert(error.response.data.message);
+        });
+    };
       
     return(
         <CardContainer data-test="today-habit-container">
@@ -43,7 +63,17 @@ export default function Card(props){
                 <h2 data-test="today-habit-sequence">Sequência atual: <font id="atual">{props.recordAtual} dias</font></h2>
                 <h2 data-test="today-habit-record">Seu Recorde: <font  id="record">{props.selfRecord} dias</font></h2>
             </TextContainer>
-            <CheckContainer data-test="today-habit-check-btn" isSelected={props.isSelected[props.index]} onClick={() => {changeSelect(props.index, !props.isSelected[props.index])}}>
+            <CheckContainer
+                data-test="today-habit-check-btn"
+                isSelected={props.isSelected[props.index]}
+                onClick={() => {
+                if (props.isSelected[props.index]) {
+                    uncheckHabit(props.index, false);
+                } else {
+                    changeSelect(props.index, true);
+                }
+                }}
+            > 
                 <AiOutlineCheck />
             </CheckContainer>
         </CardContainer>
