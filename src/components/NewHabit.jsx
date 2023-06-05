@@ -57,6 +57,7 @@ export default function NewHabit(props){
                 setIndexes([]);
             }).catch(error => {
                 console.error('Erro:', error);
+                props.setIsNewHabit(false)
                 alert("Ocorreu algum erro")
                 // Swal.fire({
                 //     icon: "error",
