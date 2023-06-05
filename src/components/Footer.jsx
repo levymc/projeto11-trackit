@@ -46,4 +46,5 @@ const SCH2 = styled.h2`
     font-size: 17.976px;
     line-height: 22px;
     color: #52B6FF;
+    margin-top: 1rem;
 `
