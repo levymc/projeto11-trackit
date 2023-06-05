@@ -5,16 +5,6 @@ export default function Letters(props){
 
     const days = ["D", "S", "T", "Q", "Q", "S", "S"]
     const [indexes, setIndexes] = useState([]); 
-    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
-
-    const changeSelect = (index, newValue) => {
-        const newArray = [...daySelected];
-        const newIndexes = [...indexes];
-        newArray[index] = newValue;
-        newIndexes.push(index);
-        setDaySelected(newArray);
-        setIndexes(newIndexes);
-    };
 
     // if(props.zerarSelect){
     //     setDaySelected(days.map((day, i) => false))
@@ -24,12 +14,8 @@ export default function Letters(props){
         <ContainerLetters>
             {days.map((day, i) => 
                 <Letter 
-                    disabled={props.loading}
                     key={i} 
-                    selected = {daySelected[i]}
-                    onClick={() =>{
-                        changeSelect(i, !daySelected[i])
-                    }}
+                    selected={props.daysSelected.includes(i)}
                 >
                     {day}
                 </Letter>

@@ -47,7 +47,7 @@ export default function HabitosPage() {
   const divHabit = habits.map((habit, i) => 
     <SCDivHabit>
       {habit.name}
-      <Letters loading={loading} />
+      <Letters daysSelected={habit.days} loading={loading} />
     </SCDivHabit>
   )
 
@@ -85,11 +85,9 @@ const PageContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.75em;
-  background-color: #ffffff;
+  background-color: #E5E5E5;
   border-radius: 10px;
   position: relative;
-  height: auto;
-  padding-bottom: 2rem;
 `;
 
 const ConteudoContainer = styled.div`
@@ -100,8 +98,8 @@ const ConteudoContainer = styled.div`
   padding-left: 1rem;
   padding-right: 1rem;
   margin-bottom: 5rem;
+  background-color: #E5E5E5;
   width: 100%;
-  height: auto;
   p {
     word-break: break-all;
     font-size: 17.976px;
