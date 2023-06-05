@@ -1,13 +1,20 @@
 
-export default function Letters(){
-
-    const [daySelected, setDaySelected] = useState(days.map((day, i) => false))
-    const [indexes, setIndexes] = useState([]); 
-    const days = ["D", "S", "T", "Q", "Q", "S", "S"]
+export default function Letters(props){
 
     return (
         <ContainerLetters>
-
+            {props.days.map((day, i) => 
+                <Letter 
+                    disabled={props.loading}
+                    key={i} 
+                    selected = {props.daySelected[i]}
+                    onClick={() =>{
+                        props.changeSelect(i, !props.daySelected[i])
+                    }}
+                >
+                    {day}
+                </Letter>
+            )}
         </ContainerLetters>
     )
 }
