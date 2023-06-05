@@ -34,9 +34,6 @@ export default function HomePage(props){
             setDataCards(response.data);
             console.log(response.data)
             setIsSelected(dataCards.map((card, i) => card.done ? true : false))
-            const trueCount = isSelected.reduce((count, value) => count + (value ? 1 : 0), 0);
-            const percentage = Math.ceil((trueCount / isSelected.length) * 100);
-            setPercent(percentage)
         } catch (error) {
           console.error('Erro ao buscar os Cards de Hoje:', error);
           alert("Algum erro ocorreu!");
@@ -46,6 +43,13 @@ export default function HomePage(props){
     React.useEffect(() => {
         getCards();
     }, []);
+
+    React.useEffect(() => {
+        const trueCount = isSelected.reduce((count, value) => count + (value ? 1 : 0), 0);
+        const percentage = Math.ceil((trueCount / isSelected.length) * 100);
+        setPercent(percentage);
+      }, [isSelected]);
+      
 
     return (
         <>
