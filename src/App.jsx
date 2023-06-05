@@ -17,9 +17,10 @@ export default function App() {
     axios.defaults.headers.common['Authorization'] = 'OIvqTxES0ukZ2VJ7BUguGPDu';
 
     const [dataUser, setDataUser] = useState({})
+    const [percentage, setPercentage] = useState(0)
 
     return (
-      <UserContext.Provider value={{ dataUser, setDataUser }}>
+      <UserContext.Provider value={{ dataUser, setDataUser , percentage, setPercentage}}>
           <ResetStyle />
             <Container>
               <Router>

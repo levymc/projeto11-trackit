@@ -13,7 +13,7 @@ import NavContainer from "../../components/NavContainer";
 
 
 export default function HomePage(props) {
-    const { dataUser, setDataUser } = useContext(UserContext);
+    const {dataUser, setDataUser, percentage, setPercentage } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token);
     const [percent, setPercent] = useState(0);
     const [isSelected, setIsSelected] = useState([]);
@@ -44,6 +44,7 @@ export default function HomePage(props) {
     };
   
     useEffect(() => {
+      
       getCards();
     }, []);
   
@@ -58,6 +59,7 @@ export default function HomePage(props) {
       );
       const percentage = Math.ceil((trueCount / isSelected.length) * 100);
       setPercent(percentage);
+      setPercentage(percentage)
     }, [isSelected]);
   
     return (

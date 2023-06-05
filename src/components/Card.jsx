@@ -6,8 +6,9 @@ import UserContext from "./UserContext";
 
 
 export default function Card(props){
-    const {dataUser, setDataUser } = useContext(UserContext);
+    const {dataUser, setDataUser, percentage, setPercentage } = useContext(UserContext);
     const [token, setToken] = useState(dataUser.token)
+
 
 
     const changeSelect = (index, newValue) => {
@@ -25,6 +26,7 @@ export default function Card(props){
                 const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
                 const percentage = Math.ceil((trueCount / newArray.length) * 100);
                 props.setPercent(percentage);
+                setPercentage(percentage)
             })
             .catch((error) => {
                 console.log(error);
@@ -47,6 +49,7 @@ export default function Card(props){
                 const trueCount = newArray.reduce((count, value) => count + (value ? 1 : 0), 0);
                 const percentage = Math.ceil((trueCount / newArray.length) * 100);
                 props.setPercent(percentage);
+                setPercentage(percentage)
             })
             .catch((error) => {
                 console.log(error);
@@ -77,6 +80,7 @@ export default function Card(props){
         </CardContainer>
     )
 }
+
 
 const CardContainer = styled.div`
     padding: 1.25rem;
